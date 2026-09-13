@@ -1568,7 +1568,9 @@ function mountChequer(canvas, { carry, section }) {
 // ===== contour.js =====
 
 const LINE_SCALE = 3.8, LINE_COUNT = 2.5, WAVE_AMOUNT = 0.37, WAVE_SPEED = 1.66, LINE_OPACITY = 0.85;
-const CELLS = 96;
+const IS_MOBILE = matchMedia("(max-width: 768px), (pointer: coarse)").matches;
+const CELLS = IS_MOBILE ? 40 : 96;
+const FPS = IS_MOBILE ? 15 : 24;
 function field(x, y, t) {
   let f = Math.sin(x * 1.0 + t * 0.6) * 0.5;
   f += Math.sin(y * 0.85 - t * 0.45) * 0.45;
@@ -1638,7 +1640,7 @@ function mountContour(canvas, colorVar) {
     }
     ctx.stroke(); ctx.globalAlpha = 1;
   }
-  subscribe(draw, () => 24);
+  subscribe(draw, () => FPS);
 }
 
 
