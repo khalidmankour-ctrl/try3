@@ -2426,6 +2426,15 @@ function el(tag, attrs) {
 function mountSeason() {
   const section = document.querySelector("[data-season]");
   if (!section) return;
+
+  // Shared visibility gate for this section's small always-on loops (globe
+  // spin, grid crawl, hub ping) — same reasoning as the halftone's own gate
+  // further down: without it they keep ticking for the rest of the page's
+  // life once scrolled past.
+  let sectionInView = false;
+  new IntersectionObserver((entries) => {
+    for (const e of entries) sectionInView = e.isIntersecting;
+  }).observe(section);
   const stage = document.getElementById("season-stage");
   const mapSvg = document.getElementById("season-map-svg");
   const dotsCanvas = document.getElementById("season-dots");
@@ -2452,12 +2461,13 @@ function mountSeason() {
   // ---- globe spin ----
   const meridian = document.getElementById("season-meridian");
   subscribe((t) => {
+    if (!sectionInView) return;
     const turn = ((t / 10000) % 1) * Math.PI * 2;
     meridian.setAttribute("rx", String(Math.max(0.5, Math.abs(Math.cos(turn)) * 18)));
   }, () => 60);
 
   // ---- build the SVG map ----
-  buildMap(mapSvg);
+  buildMap(mapSvg, () => sectionInView);
 
   // ---- halftone dots ----
   const dotsEngine = mountHalftone(dotsCanvas, section);
@@ -2490,7 +2500,7 @@ function mountSeason() {
   fit();
 }
 
-function buildMap(svg) {
+function buildMap(svg, isInView) {
   const g = (tag, attrs, parent) => { const n = el(tag, attrs); (parent || svg).appendChild(n); return n; };
   // grid axes
   const grid = g("g", { id: "grid" });
@@ -2531,12 +2541,14 @@ function buildMap(svg) {
   svg.appendChild(markersG);
 
   subscribe((t) => {
+    if (!isInView()) return;
     const v = ((t / 4200) % 1);
     const ping2 = 1 - v;
     ping.setAttribute("r", String(10.63 + v * 86));
     ping.setAttribute("opacity", String(0.4 * ping2 * ping2));
   }, () => 30);
   subscribe((t) => {
+    if (!isInView()) return;
     const off = ((t / 7000) % 1) * 20.5;
     grid.querySelectorAll("line").forEach((l) => l.setAttribute("stroke-dashoffset", String(off)));
   }, () => 60);
@@ -2673,6 +2685,19 @@ function mountHalftone(canvas, section) {
   let pointer = { x: DOT_LATTICE.originX, y: DOT_LATTICE.originY, heat: 0 };
   let target = { x: 0, y: 0, on: false };
   let spread = 0, last = 0;
+
+  // Gate the whole per-frame loop on visibility, the same "in view plus a
+  // few frames" rule every canvas on the page follows — without it this
+  // 60fps loop (pointer easing, decay over every active dot, a canvas
+  // redraw) keeps running for the rest of the page's life once the season
+  // block has scrolled away, competing with the browser for main-thread
+  // time on every subsequent scroll frame.
+  let inView = false, grace = 0;
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) inView = e.isIntersecting;
+  });
+  io.observe(section);
+
   section.addEventListener("pointermove", (e) => {
     if (window.matchMedia("(hover: none)").matches) return;
     const rect = canvas.getBoundingClientRect();
@@ -2684,6 +2709,12 @@ function mountHalftone(canvas, section) {
   document.addEventListener("blur", () => { target.on = false; });
 
   subscribe((now) => {
+    if (!inView) {
+      if (grace <= 0) { last = 0; return; }
+      grace--;
+    } else {
+      grace = 10;
+    }
     const dt = last ? Math.min(0.1, (now - last) / 1000) : 0;
     last = now;
     const wanted = target.on ? 0.95 : 0;
@@ -3057,6 +3088,14 @@ function mountPaddock() {
   mountChequer(document.getElementById("paddock-chequer"), { carry: "dark", section });
   hydrateAssets(section);
 
+  // Shared visibility gate for this section's small always-on loops (the
+  // calendar's dashed-connector crawl, the live-round pulse) — without it
+  // they keep ticking for the rest of the page's life once scrolled past.
+  let sectionInView = false;
+  new IntersectionObserver((entries) => {
+    for (const e of entries) sectionInView = e.isIntersecting;
+  }).observe(section);
+
   const h1 = document.getElementById("paddock-head1"), h2 = document.getElementById("paddock-head2");
   const report = document.getElementById("paddock-report");
   const cta = section.querySelector(".pcta");
@@ -3122,7 +3161,7 @@ function mountPaddock() {
     strip.appendChild(el);
     const dir = l.x < 675 ? 1 : -1;
     let bx = 0;
-    subscribe(() => { bx = (bx + dir * 0.4) % 12; el.style.backgroundPositionX = `${bx}px`; }, () => 30);
+    subscribe(() => { if (!sectionInView) return; bx = (bx + dir * 0.4) % 12; el.style.backgroundPositionX = `${bx}px`; }, () => 30);
   });
   cards.forEach((c, i) => {
     const el = document.createElement("div");
@@ -3172,6 +3211,7 @@ function mountPaddock() {
       const ring = pulse.querySelector("#pulse-ring");
       let last = 0;
       subscribe((t) => {
+        if (!sectionInView) return;
         const v = (t % 3200) / 3200;
         const e = 1 - (1 - v) * (1 - v);
         ring.setAttribute("r", String(5.5 + e * 5.5 * 3.4));
