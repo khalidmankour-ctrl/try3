@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lumora — Independent Design &amp; Engineering Studio</title>
-<meta name="description" content="Lumora is an independent studio partnering with ambitious teams to ship digital products, brand systems, and the strategy that holds them together.">
+<title>Pixelia — Agence digitale créative</title>
+<meta name="description" content="Pixelia conçoit des sites web sur-mesure et des vidéos premium pour mettre votre business sous les projecteurs. Basés en Belgique, 100% à distance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -282,12 +282,12 @@ nav.primary-nav .caret{font-size:.75rem;opacity:.6}
 @media(min-width:768px){.stats-panel{padding-inline:4rem}}
 .stats-h2{margin-top:1rem;max-width:20ch;font-size:1.875rem;font-weight:500;letter-spacing:-.01em}
 @media(min-width:768px){.stats-h2{font-size:2.25rem}}
-.stats-grid{margin-top:3.5rem;display:grid;grid-template-columns:repeat(2,1fr);column-gap:2rem;row-gap:3rem}
-@media(min-width:1024px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
-.stat-num{font-size:3rem;font-weight:600;letter-spacing:-.02em}
-@media(min-width:640px){.stat-num{font-size:3.75rem}}
-@media(min-width:768px){.stat-num{font-size:4.5rem}}
-.stat-label{margin-top:.75rem;font-size:.875rem;color:rgba(255,255,255,.55)}
+.stats-grid{margin-top:3.5rem;display:grid;grid-template-columns:1fr;column-gap:2.5rem;row-gap:2.5rem}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(3,1fr)}}
+.stat-num{font-size:2.5rem;font-weight:600;letter-spacing:-.02em;color:rgba(255,255,255,.3)}
+@media(min-width:640px){.stat-num{font-size:2.75rem}}
+.stat-label{margin-top:.5rem;max-width:26rem;font-size:.9375rem;line-height:1.5;color:rgba(255,255,255,.55)}
+.stat-label strong{display:block;margin-bottom:.35rem;font-size:1.125rem;font-weight:500;color:#fff}
 
 /* ---- footer ---- */
 footer#site-footer{position:relative;overflow:hidden;border-radius:2rem 2rem 0 0;background:#0a0a0a;color:#fff}
@@ -379,38 +379,37 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
 </script>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
+<a href="#main" class="skip-link">Aller au contenu</a>
 
-<div id="loader" role="status" aria-label="Loading">
+<div id="loader" role="status" aria-label="Chargement">
   <div class="center">
-    <div class="brand-row"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Lumora</div>
-    <p class="tagline">Bold ideas, shipped with quiet precision.</p>
+    <div class="brand-row"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Pixelia</div>
+    <p class="tagline">Des sites et des vidéos qui mettent votre business sous les projecteurs.</p>
   </div>
   <div class="progress-block">
     <div class="track"><div class="fill" id="loader-fill"></div></div>
-    <div class="prow"><span>Loading</span><span class="count" id="loader-count">000</span></div>
+    <div class="prow"><span>Chargement</span><span class="count" id="loader-count">000</span></div>
   </div>
 </div>
 
 <header id="site-header">
   <div class="shell inner">
-    <button class="brand-btn" data-scroll="home"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Lumora</button>
-    <nav class="primary-nav" aria-label="Primary">
+    <button class="brand-btn" data-scroll="home"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Pixelia</button>
+    <nav class="primary-nav" aria-label="Principal">
       <ul>
-        <li><a href="#home" data-scroll="home" aria-current="page">Home</a></li>
-        <li><a href="#works" data-scroll="works">Work</a></li>
+        <li><a href="#home" data-scroll="home" aria-current="page">Accueil</a></li>
+        <li><a href="#works" data-scroll="works">Réalisations</a></li>
         <li><button data-scroll="services">Services <span class="caret">&#9662;</span></button></li>
-        <li><a href="#about" data-scroll="about">Studio</a></li>
-        <li><a href="#careers" data-scroll="careers">Careers</a></li>
+        <li><a href="#about" data-scroll="about">Agence</a></li>
         <li><button data-open-modal>Contact</button></li>
       </ul>
     </nav>
     <div class="header-right">
       <div class="clock-chip">
-        <span class="label">Local time</span>
+        <span class="label">Heure locale</span>
         <span class="time" id="clock-time">9:41am</span>
         <span class="sep">&bull;</span>
-        <span class="date" id="clock-date">12 March, 2025</span>
+        <span class="date" id="clock-date">12 mars, 2025</span>
       </div>
       <button class="menu-btn" id="open-nav-menu" aria-haspopup="true">
         <span class="inner"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg> <span class="label">Menu</span></span>
@@ -426,28 +425,24 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
       <canvas id="liquid-canvas" aria-hidden="true"></canvas>
     </div>
     <div class="hero-vignette" aria-hidden="true"></div>
-    <div class="hero-watermark" id="hero-watermark">LUMORA</div>
+    <div class="hero-watermark" id="hero-watermark">PIXELIA</div>
     <div class="hero-content shell">
       <div class="hero-left">
-        <p class="hero-eyebrow rv-fade" data-delay="200"><span class="dot"></span>Independent Studio</p>
+        <p class="hero-eyebrow rv-fade" data-delay="200"><span class="dot"></span>Agence digitale créative</p>
         <h1 class="hero-h1" id="hero-h1" data-reveal-lines data-delay="250" data-stagger="120">
-          <span class="rv-line"><span class="rv-line-inner">Bold ideas,</span></span>
-          <span class="rv-line"><span class="rv-line-inner">shipped with</span></span>
-          <span class="rv-line"><span class="rv-line-inner">quiet precision</span></span>
+          <span class="rv-line"><span class="rv-line-inner">On met votre</span></span>
+          <span class="rv-line"><span class="rv-line-inner">business sous</span></span>
+          <span class="rv-line"><span class="rv-line-inner">les projecteurs</span></span>
         </h1>
         <div class="rating-row rv-fade" data-delay="650">
           <span class="stars">
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
-            <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 5.88 6.49.94-4.7 4.58 1.11 6.46L12 17.9l-5.8 3.05 1.1-6.46-4.69-4.58 6.49-.94L12 2.5z"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
           </span>
-          <span class="rtext">200+ brands shipped</span>
+          <span class="rtext">Sites sur-mesure &amp; vidéos premium</span>
         </div>
         <div class="cta-row rv-fade" data-delay="750">
-          <a href="#" class="pill-btn dark with-arrow" data-open-modal><span class="pill">Let's Talk<span class="pill-badge right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
-          <a href="#works" class="pill-btn outline no-arrow" data-scroll="works"><span class="pill">View Work</span></a>
+          <a href="#" class="pill-btn dark with-arrow" data-open-modal><span class="pill">Discutons-en<span class="pill-badge right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
+          <a href="#works" class="pill-btn outline no-arrow" data-scroll="works"><span class="pill">Voir nos réalisations</span></a>
         </div>
       </div>
       <div class="hero-right">
@@ -459,24 +454,24 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
               <div class="hero-card-bottom">
                 <div class="hero-card-dots" id="hero-card-dots"></div>
                 <div class="hero-card-nav">
-                  <button class="prev" aria-label="Previous"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-                  <button class="next" aria-label="Next"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                  <button class="prev" aria-label="Précédent"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+                  <button class="next" aria-label="Suivant"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="partners-block rv-fade" data-delay="550">
-          <p class="partners-label">Trusted by</p>
+          <p class="partners-label">Ils nous font confiance</p>
           <div class="partners-grid" id="partners-grid"></div>
         </div>
       </div>
     </div>
     <div class="hero-status" id="hero-status">
       <div class="shell" style="display:flex;align-items:center;justify-content:space-between;width:100%">
-        <span>Working since 2014</span>
-        <span class="mid">Remote-first, worldwide</span>
-        <span class="right">Scroll to explore <span aria-hidden="true">&darr;</span></span>
+        <span>Mons &middot; Charleroi &middot; Hainaut</span>
+        <span class="mid">100% à distance</span>
+        <span class="right">Découvrir <span aria-hidden="true">&darr;</span></span>
       </div>
     </div>
   </section>
@@ -485,24 +480,24 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
     <div class="shell">
       <div class="about-left">
         <svg class="icon globe-bg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.25"/><path d="M12 2.75c2.6 2.3 4 5.8 4 9.25s-1.4 6.95-4 9.25c-2.6-2.3-4-5.8-4-9.25s1.4-6.95 4-9.25zM2.75 12h18.5"/></svg>
-        <p class="eyebrow dark" style="position:relative"><span class="dot"></span>The Studio</p>
+        <p class="eyebrow dark" style="position:relative"><span class="dot"></span>L'agence</p>
         <div class="about-bottom rv-fade">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9.25"/><path d="M12 2.75c2.6 2.3 4 5.8 4 9.25s-1.4 6.95-4 9.25c-2.6-2.3-4-5.8-4-9.25s1.4-6.95 4-9.25zM2.75 12h18.5"/></svg>
-          <span>A distributed team building across every time zone.</span>
+          <span>Une équipe basée en Belgique, qui travaille entièrement à distance.</span>
         </div>
       </div>
       <div class="about-right">
-        <h2 class="about-h2" data-reveal-words>We partner with ambitious teams to ship <span class="muted">digital products, brand systems, and the strategy that holds them together.</span></h2>
+        <h2 class="about-h2" data-reveal-words>Un business que personne ne voit est un business que personne ne retient. <span class="muted">On rend visible ce qui vous distingue, avec des standards dignes des plus grandes marques.</span></h2>
         <div class="about-footer-row rv-fade" data-delay="200">
           <div>
-            <p class="about-online-label">Find us online</p>
+            <p class="about-online-label">Nous trouver en ligne</p>
             <div class="social-row">
-              <a href="https://x.com" class="social-chip accent" aria-label="X / Twitter"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></a>
-              <a href="#" class="social-chip plain" aria-label="Behance"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg></a>
-              <a href="#" class="social-chip plain" aria-label="Dribbble"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2" fill="currentColor"/></svg></a>
+              <a href="#" class="social-chip accent" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+              <a href="#" class="social-chip plain" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 4h-2.5A3.5 3.5 0 0 0 9 7.5V10H7v3h2v7h3v-7h2.5l.5-3H12V7.8c0-.7.3-1.1 1.2-1.1H15V4Z"/></svg></a>
+              <a href="#" class="social-chip plain" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><circle cx="8" cy="8.2" r="0.6" fill="currentColor"/><path d="M8 11v6M12 17v-3.5c0-1.4 1-2.5 2.3-2.5s2.2 1 2.2 2.5V17"/></svg></a>
             </div>
           </div>
-          <a href="#about" class="pill-btn outline with-arrow"><span class="pill">About Us<span class="pill-badge right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
+          <a href="#about" class="pill-btn outline with-arrow"><span class="pill">À propos<span class="pill-badge right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></a>
         </div>
       </div>
     </div>
@@ -514,8 +509,8 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
 
   <section id="works">
     <div class="shell">
-      <div class="section-eyebrow-wrap"><p class="eyebrow dark pill rv-fade"><span class="dot"></span>Portfolio</p></div>
-      <h2 class="section-h2" data-reveal-lines data-delay="120" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Selected Work</span></span></h2>
+      <div class="section-eyebrow-wrap"><p class="eyebrow dark pill rv-fade"><span class="dot"></span>Réalisations</p></div>
+      <h2 class="section-h2" data-reveal-lines data-delay="120" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Nos réalisations</span></span></h2>
       <ul class="portfolio-grid" id="portfolio-grid"></ul>
     </div>
   </section>
@@ -523,7 +518,7 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
   <section id="services">
     <div class="shell">
       <p class="eyebrow dark rv-fade"><span class="dot"></span>Services</p>
-      <h2 class="section-h2 left services-h2" data-reveal-lines data-delay="120" style="overflow:hidden;max-width:16ch"><span class="rv-line"><span class="rv-line-inner">What we do best</span></span></h2>
+      <h2 class="section-h2 left services-h2" data-reveal-lines data-delay="120" style="overflow:hidden;max-width:16ch"><span class="rv-line"><span class="rv-line-inner">Ce qu'on fait de mieux</span></span></h2>
       <ul id="services-list"></ul>
     </div>
   </section>
@@ -531,8 +526,8 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
   <section id="stats-section">
     <div class="shell">
       <div class="stats-panel rv-fade" data-delay="0">
-        <p class="eyebrow light"><span class="dot"></span>By the numbers</p>
-        <h2 class="stats-h2" data-reveal-lines data-delay="120" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Proof in the work, not the words.</span></span></h2>
+        <p class="eyebrow light"><span class="dot"></span>Pourquoi Pixelia</p>
+        <h2 class="stats-h2" data-reveal-lines data-delay="120" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">La preuve par le travail, pas par les mots.</span></span></h2>
         <ul class="stats-grid" id="stats-grid"></ul>
       </div>
     </div>
@@ -543,90 +538,88 @@ footer#site-footer .shell{position:relative;z-index:10;padding:5rem 1.25rem 2.5r
   <div class="shell">
     <div class="footer-cta">
       <h2 class="footer-h2" data-reveal-lines data-delay="0" data-stagger="100" style="overflow:hidden">
-        <span class="rv-line"><span class="rv-line-inner">Have a project in mind?</span></span>
-        <span class="rv-line"><span class="rv-line-inner">Let's get to work.</span></span>
+        <span class="rv-line"><span class="rv-line-inner">Un projet en tête ?</span></span>
+        <span class="rv-line"><span class="rv-line-inner">Parlons-en.</span></span>
       </h2>
-      <a href="#" class="pill-btn light with-arrow" data-open-modal><span class="pill">Start a project<span class="pill-badge up-right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></a>
+      <a href="#" class="pill-btn light with-arrow" data-open-modal><span class="pill">Démarrer un projet<span class="pill-badge up-right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></a>
     </div>
     <div class="footer-cols">
       <div class="footer-col">
-        <div class="brand-row" style="display:flex;align-items:center;gap:.5rem;font-size:1.125rem;font-weight:600"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Lumora</div>
-        <p class="footer-brand-tag">An independent studio crafting brands, products, and the systems that connect them.</p>
+        <div class="brand-row" style="display:flex;align-items:center;gap:.5rem;font-size:1.125rem;font-weight:600"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Pixelia</div>
+        <p class="footer-brand-tag">Sites web sur-mesure et vidéos premium pour mettre votre business sous les projecteurs.</p>
       </div>
       <div class="footer-col">
-        <p class="footer-col-title">Company</p>
+        <p class="footer-col-title">Entreprise</p>
         <ul>
-          <li><a href="#about" class="animated-link"><span>About</span></a></li>
-          <li><a href="#careers" class="animated-link"><span>Careers</span></a></li>
-          <li><a href="#partners" class="animated-link"><span>Partners</span></a></li>
+          <li><a href="#about" class="animated-link"><span>À propos</span></a></li>
+          <li><a href="#legal" class="animated-link"><span>Mentions légales</span></a></li>
           <li><a href="#" class="animated-link" data-open-modal><span>Contact</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
         <p class="footer-col-title">Services</p>
         <ul>
-          <li><a href="#development" class="animated-link"><span>Development</span></a></li>
-          <li><a href="#design" class="animated-link"><span>Design</span></a></li>
-          <li><a href="#qa" class="animated-link"><span>Quality Assurance</span></a></li>
-          <li><a href="#consulting" class="animated-link"><span>Consulting</span></a></li>
+          <li><a href="#services" class="animated-link"><span>Sites web</span></a></li>
+          <li><a href="#services" class="animated-link"><span>Vidéo &amp; storytelling</span></a></li>
+          <li><a href="#services" class="animated-link"><span>Direction artistique</span></a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <p class="footer-col-title">Social</p>
+        <p class="footer-col-title">Réseaux</p>
         <ul>
-          <li><a href="https://x.com" class="animated-link"><span>X / Twitter</span></a></li>
-          <li><a href="#" class="animated-link"><span>Behance</span></a></li>
-          <li><a href="#" class="animated-link"><span>Dribbble</span></a></li>
+          <li><a href="#" class="animated-link"><span>Instagram</span></a></li>
+          <li><a href="#" class="animated-link"><span>Facebook</span></a></li>
           <li><a href="#" class="animated-link"><span>LinkedIn</span></a></li>
         </ul>
       </div>
     </div>
     <div class="legal-bar">
-      <span>&copy; 2025 Lumora Studio. All rights reserved.</span>
+      <span>&copy; 2025 Pixelia &middot; TVA BE 1035.047.012 &middot; Tous droits réservés.</span>
       <div class="legal-links">
-        <a href="#privacy" class="animated-link"><span>Privacy</span></a>
-        <a href="#terms" class="animated-link"><span>Terms</span></a>
+        <a href="#legal" class="animated-link"><span>Mentions légales</span></a>
+        <a href="#privacy" class="animated-link"><span>Confidentialité</span></a>
+        <a href="#terms" class="animated-link"><span>CGV</span></a>
       </div>
     </div>
   </div>
-  <div class="footer-watermark" aria-hidden="true">LUMORA</div>
+  <div class="footer-watermark" aria-hidden="true">PIXELIA</div>
 </footer>
 
-<div id="nav-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+<div id="nav-menu" role="dialog" aria-modal="true" aria-label="Menu du site">
   <div class="topbar shell">
-    <div class="brand-row"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Lumora</div>
-    <button class="close-btn" id="close-nav-menu"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg> Close</button>
+    <div class="brand-row"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg> Pixelia</div>
+    <button class="close-btn" id="close-nav-menu"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg> Fermer</button>
   </div>
   <nav>
     <ul id="menu-items"></ul>
   </nav>
   <div class="menu-bottom">
-    <span id="menu-clock">Local time</span>
-    <button id="menu-start-project">Start a project &rarr;</button>
+    <span id="menu-clock">Heure locale</span>
+    <button id="menu-start-project">Démarrer un projet &rarr;</button>
   </div>
 </div>
 
-<div id="request-modal" role="dialog" aria-modal="true" aria-label="Start a project">
+<div id="request-modal" role="dialog" aria-modal="true" aria-label="Démarrer un projet">
   <div class="modal-panel">
-    <button class="modal-close" id="modal-close" aria-label="Close"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></button>
+    <button class="modal-close" id="modal-close" aria-label="Fermer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg></button>
     <div class="modal-heading">
-      <p class="modal-eyebrow"><span class="dot"></span>Start a project</p>
-      <h2>Tell us what you're building.</h2>
+      <p class="modal-eyebrow"><span class="dot"></span>Démarrer un projet</p>
+      <h2>Dites-nous ce que vous construisez.</h2>
     </div>
     <form id="request-form">
-      <div class="field"><label for="f-name">Name</label><input type="text" id="f-name" required placeholder="Your name"></div>
-      <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" required placeholder="you@company.com"></div>
-      <div class="field"><label for="f-project">Project</label><textarea id="f-project" rows="4" required placeholder="A few words about your project, timeline, and budget."></textarea></div>
+      <div class="field"><label for="f-name">Nom</label><input type="text" id="f-name" required placeholder="Votre nom"></div>
+      <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" required placeholder="vous@entreprise.com"></div>
+      <div class="field"><label for="f-project">Projet</label><textarea id="f-project" rows="4" required placeholder="Quelques mots sur votre projet, votre secteur et vos délais."></textarea></div>
       <div class="modal-bottom-row">
-        <span class="modal-note">We reply within one business day.</span>
-        <button type="submit" class="pill-btn dark with-arrow" id="submit-btn"><span class="pill" id="submit-label">Send request<span class="pill-badge up-right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></button>
+        <span class="modal-note">On répond sous un jour ouvré.</span>
+        <button type="submit" class="pill-btn dark with-arrow" id="submit-btn"><span class="pill" id="submit-label">Envoyer la demande<span class="pill-badge up-right"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></span></button>
       </div>
     </form>
     <div class="modal-success" id="modal-success">
       <div class="modal-success-badge"><svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg></div>
-      <h2>Request received</h2>
-      <p>Thanks for reaching out — we'll get back to you within one business day.</p>
-      <button type="button" class="pill-btn dark no-arrow" id="modal-success-close"><span class="pill">Close</span></button>
+      <h2>Demande reçue</h2>
+      <p>Merci de nous avoir contactés — on vous répond sous un jour ouvré.</p>
+      <button type="button" class="pill-btn dark no-arrow" id="modal-success-close"><span class="pill">Fermer</span></button>
     </div>
   </div>
 </div>
@@ -774,7 +767,7 @@ function formatTime(d) {
   h = h % 12 || 12;
   return `${h}:${m}${mer}`;
 }
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 function formatDate(d) {
   return `${d.getDate()} ${MONTHS[d.getMonth()]}, ${d.getFullYear()}`;
 }
@@ -947,64 +940,70 @@ function mountLiquidReveal() {
 
 // ===================== data =====================
 const CREATE_TILES = [
-  { cls: "light", label: "Brand Identity" },
-  { cls: "accent", label: "Web &amp; Product" },
+  { cls: "light", label: "Sites Web" },
+  { cls: "accent", label: "Vidéo &amp; Storytelling" },
   { cls: "dark", icon: true },
-  { cls: "ghost", label: "&amp; More" },
+  { cls: "ghost", label: "Direction artistique" },
 ];
 
 const PORTFOLIO = [
   {
-    tag: "Fintech", year: "2024", title: "Northwind Bank",
-    desc: "A full rebrand and product redesign for a challenger bank serving 2M+ customers.",
-    tags: ["Branding", "Product", "Web"],
+    tag: "Café", medium: "Vidéo", title: "Bacha Coffee Marrakech",
+    desc: "Le rituel du café, filmé comme une scène de film — un rendu cinématographique haut de gamme.",
+    tags: ["Vidéo", "Storytelling"],
   },
   {
-    tag: "Hospitality", year: "2023", title: "Fieldstone Hospitality",
-    desc: "Brand system and booking platform for a boutique hotel group across 12 properties.",
-    tags: ["Branding", "UX", "Engineering"],
+    tag: "Hôtellerie", medium: "Vidéo", title: "Fairmont Doha",
+    desc: "Une réalisation premium, pensée pour capter l'attention sur tous les formats.",
+    tags: ["Vidéo", "Luxe"],
   },
   {
-    tag: "Healthtech", year: "2024", title: "Orbital Health",
-    desc: "Design system and native app for a remote patient-monitoring platform.",
-    tags: ["Product", "Mobile", "Design System"],
+    tag: "Corporate", medium: "Site Web", title: "Winged Prow",
+    desc: "Un site signature à l'art direction exclusive, qui transforme l'attention en action.",
+    tags: ["Web", "Direction artistique"],
   },
   {
-    tag: "Retail", year: "2023", title: "Kite &amp; Co",
-    desc: "E-commerce relaunch with a 38% lift in conversion.",
-    tags: ["Web", "Commerce", "Growth"],
+    tag: "Industrie", medium: "Site Web", title: "Rychem Group",
+    desc: "Rapide, fluide et irréprochable sur tous les écrans, structuré pour Google.",
+    tags: ["Web", "SEO"],
+  },
+  {
+    tag: "Sport", medium: "Site Web", title: "EHM Boxing Club",
+    desc: "Demandes et réservations simplifiées pour un club de boxe.",
+    tags: ["Web", "Réservation"],
+  },
+  {
+    tag: "Marque", medium: "Site Web", title: "Kimaji",
+    desc: "Une direction artistique exclusive, jamais construite sur un template.",
+    tags: ["Web", "Branding"],
   },
 ];
 
 const SERVICES = [
-  { title: "Brand Strategy", desc: "Positioning, identity systems, and the narrative that ties them together." },
-  { title: "Product Design", desc: "Interfaces and experiences for web and native, from first sketch to shipped." },
-  { title: "Engineering", desc: "Full-stack builds on modern, maintainable foundations — no shortcuts." },
-  { title: "Growth &amp; Consulting", desc: "Ongoing partnership to test, measure, and scale what's working." },
+  { title: "Sites Web", desc: "Un site signature qui transforme l'attention en action — rapide, fluide et structuré pour Google." },
+  { title: "Vidéo &amp; Storytelling", desc: "Des vidéos premium au rendu cinématographique, créées entièrement à distance." },
 ];
 
-const STATS = [
-  { value: 200, suffix: "+", label: "Brands shipped" },
-  { value: 11, suffix: "", label: "Years in business" },
-  { value: 98, suffix: "%", label: "Client retention" },
-  { value: 40, suffix: "", label: "Specialists worldwide" },
+const PHILOSOPHY = [
+  { n: "01", title: "On commence par votre histoire.", desc: "Avant design ou caméra, on écoute : votre savoir-faire, vos gestes, ce qui vous distingue vraiment." },
+  { n: "02", title: "L'IA sublime, la direction reste humaine.", desc: "L'intelligence artificielle amplifie notre travail, mais chaque choix créatif reste humain." },
+  { n: "03", title: "Proches, même à distance.", desc: "On travaille main dans la main avec les entreprises, entièrement à distance." },
 ];
 
-const PARTNERS = ["Vantage", "Northwind", "Alto Labs", "Fieldstone", "Orbital", "Kite & Co", "Havenline"];
+const PARTNERS = ["Bacha Coffee", "Fairmont Doha", "Winged Prow", "Rychem Group", "EHM Boxing", "Kimaji", "SF Tems Trading"];
 
 const HERO_CARD_ITEMS = [
-  { cap: "Case Study", title: "Scaled a fintech platform to 2M users" },
-  { cap: "Case Study", title: "Rebuilt a brand system for a hospitality group" },
-  { cap: "Case Study", title: "Shipped an AI product from zero to launch" },
+  { cap: "Vidéo", title: "Bacha Coffee Marrakech — le rituel du café filmé comme un film" },
+  { cap: "Site Web", title: "Winged Prow — un site signature à l'art direction exclusive" },
+  { cap: "Site Web", title: "EHM Boxing Club — réservations simplifiées pour un club de sport" },
 ];
 
 const MENU_LINKS = [
-  { n: "01", label: "Home", scroll: "home" },
-  { n: "02", label: "Work", scroll: "works" },
+  { n: "01", label: "Accueil", scroll: "home" },
+  { n: "02", label: "Réalisations", scroll: "works" },
   { n: "03", label: "Services", scroll: "services" },
-  { n: "04", label: "Studio", scroll: "about" },
-  { n: "05", label: "Careers", scroll: "careers" },
-  { n: "06", label: "Contact", modal: true },
+  { n: "04", label: "Agence", scroll: "about" },
+  { n: "05", label: "Contact", modal: true },
 ];
 
 const ICON_DIAMOND = '<svg class="icon" viewBox="0 0 48 48" fill="currentColor"><path d="M24 2c2.2 13.8 7.9 19.6 22 22-14.1 2.4-19.8 8.2-22 22-2.2-13.8-7.9-19.6-22-22 14.1-2.4 19.8-8.2 22-22Z"/></svg>';
@@ -1026,7 +1025,7 @@ function populatePortfolio() {
   grid.innerHTML = PORTFOLIO.map((p) => `
     <li>
       <a href="#works" class="portfolio-card">
-        <div class="pf-top"><span>${p.tag}</span><span>${p.year}</span></div>
+        <div class="pf-top"><span>${p.tag}</span><span>${p.medium}</span></div>
         <div class="pf-watermark">${ICON_DIAMOND}</div>
         <div class="pf-badge">${ICON_ARROW}</div>
         <div class="pf-bottom">
@@ -1054,26 +1053,12 @@ function populateServices() {
   `).join("");
 }
 
-function populateStats() {
+function populatePhilosophy() {
   const grid = document.getElementById("stats-grid");
   if (!grid) return;
-  grid.innerHTML = STATS.map((s) => `
-    <li><p class="stat-num" data-value="0">0${s.suffix}</p><p class="stat-label">${s.label}</p></li>
+  grid.innerHTML = PHILOSOPHY.map((p) => `
+    <li><p class="stat-num">${p.n}</p><p class="stat-label"><strong>${p.title}</strong><br>${p.desc}</p></li>
   `).join("");
-  const nums = [...grid.querySelectorAll(".stat-num")];
-  const panel = document.querySelector(".stats-panel");
-  if (!panel || !nums.length) return;
-  let last = -1;
-  scrollProgress(panel, (p) => {
-    const eased = p * p * (3 - 2 * p);
-    const rounded = Math.round(eased * 1000);
-    if (rounded === last) return;
-    last = rounded;
-    nums.forEach((el, i) => {
-      const stat = STATS[i];
-      el.textContent = `${Math.round(eased * stat.value)}${stat.suffix}`;
-    });
-  });
 }
 
 function populatePartners() {
@@ -1178,7 +1163,7 @@ function mountClock() {
     const t = formatTime(now), d = formatDate(now);
     if (timeEl) timeEl.textContent = t;
     if (dateEl) dateEl.textContent = d;
-    if (menuClock) menuClock.textContent = `${t} local time`;
+    if (menuClock) menuClock.textContent = `${t} heure locale`;
   }
   update();
   setInterval(update, 1000 * 15);
@@ -1278,7 +1263,7 @@ function boot() {
   populateCreateBand();
   populatePortfolio();
   populateServices();
-  populateStats();
+  populatePhilosophy();
   populatePartners();
   populateMenu();
   mountHeroCard();
