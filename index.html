@@ -3010,6 +3010,11 @@ function mountTimeline() {
       marker.setAttribute("transform", `translate(8 ${run}) rotate(${(run / (rest * railHeight || 1)) * 1800})`);
     },
   });
+
+  // the 7 rows were just injected well after Lenis measured the page —
+  // force it to re-read the new (much taller) document height now rather
+  // than waiting on its own debounced auto-resize.
+  lenis?.resize();
 }
 
 
@@ -3422,18 +3427,26 @@ function mountNews() {
   prev?.addEventListener("click", () => track.scrollBy({ left: -step(), behavior: "smooth" }));
   next?.addEventListener("click", () => track.scrollBy({ left: step(), behavior: "smooth" }));
 
-  // drag-to-scroll (mouse)
+  // drag-to-scroll — mouse only. Touch/pen get native scrolling: the track
+  // already has overflow-x:auto, and capturing a touch pointer here would
+  // hand this element the whole gesture and suppress the page's own
+  // vertical scroll for the rest of that touch, which is worse than not
+  // having drag-to-scroll at all on those devices.
   let isDown = false, startX = 0, startScroll = 0;
   track?.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse") return;
     isDown = true; track.classList.add("dragging");
     startX = e.clientX; startScroll = track.scrollLeft;
     track.setPointerCapture(e.pointerId);
   });
   track?.addEventListener("pointermove", (e) => {
-    if (!isDown) return;
+    if (!isDown || e.pointerType !== "mouse") return;
     track.scrollLeft = startScroll - (e.clientX - startX);
   });
-  const endDrag = () => { isDown = false; track?.classList.remove("dragging"); };
+  const endDrag = (e) => {
+    if (e && e.pointerType !== "mouse") return;
+    isDown = false; track?.classList.remove("dragging");
+  };
   track?.addEventListener("pointerup", endDrag);
   track?.addEventListener("pointercancel", endDrag);
   track?.addEventListener("pointerleave", endDrag);
