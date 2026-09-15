@@ -1,0 +1,1314 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engels Échafaudages — l'échafaudage à la hauteur de vos projets</title>
+<meta name="description" content="Location et montage d'échafaudages en Belgique et dans le Nord de la France. Devis gratuit, transport, montage, démontage. Plus de 450 chantiers par an.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased;scroll-behavior:auto}
+@media (max-width:1920px){html{font-size:0.833333vw}}
+@media (max-width:1440px){html{font-size:1.111111vw}}
+@media (max-width:1024px){html{font-size:1.5625vw}}
+@media (max-width:640px){html{font-size:4.444444vw}}
+body{background:#0a0e14;color:#e9edf3;font-family:'Manrope',sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+ul{list-style:none}
+img{display:block;max-width:100%}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid #3ecf7a;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+:root{
+  --bg:#0a0e14; --panel:#0e141d; --panel-2:#121a26; --line:rgba(255,255,255,.09);
+  --ink:#e9edf3; --muted:#8b95a5; --subtle:#5b6577;
+  --blue:#1e6fd9; --blue-deep:#0d3d78; --green:#2fbf6a; --green-deep:#1a8c4c;
+  --steel:#9aa4b2;
+  --radius-pill:9999px; --radius-card:1.5rem; --radius-card-sm:1rem; --radius-control:.75rem;
+  --text-watermark:11rem; --container-shell:80rem;
+}
+
+.shell{max-width:var(--container-shell);margin-inline:auto}
+.skip-link{position:absolute;left:-999px;top:-999px}
+.skip-link:focus{position:fixed;left:1rem;top:1rem;z-index:60;border-radius:.75rem;background:#000;padding:.5rem 1rem;font-size:.875rem;color:#fff}
+
+.icon{display:inline-block;width:1em;height:1em;vertical-align:middle}
+
+/* ---- text reveal engine ---- */
+.rv-line{overflow:hidden;display:block}
+.rv-line-inner{display:block;transform:translateY(100%);opacity:0;transition:transform .9s cubic-bezier(.215,.61,.355,1),opacity .9s cubic-bezier(.215,.61,.355,1)}
+.rv-line.in .rv-line-inner{transform:translateY(0);opacity:1}
+.rv-word{display:inline-block;transform:translateY(20px);opacity:0;transition:transform .6s cubic-bezier(.165,.84,.44,1),opacity .6s cubic-bezier(.165,.84,.44,1)}
+.rv-word.in{transform:translateY(0);opacity:1}
+.rv-fade{opacity:0;transform:translateY(16px);transition:transform .8s cubic-bezier(.22,1,.36,1),opacity .8s cubic-bezier(.22,1,.36,1)}
+.rv-fade.in{opacity:1;transform:translateY(0)}
+
+/* ---- loader ---- */
+#loader{position:fixed;inset:0;z-index:120;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;background:#05070b;color:#fff;transition:transform .7s cubic-bezier(.22,1,.36,1)}
+#loader.exit{transform:translateY(-100%)}
+#loader .center{display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center;transition:opacity .5s,transform .5s}
+#loader.exit .center{opacity:0;transform:translateY(-12px)}
+#loader .brand-row{display:flex;align-items:center;gap:.6rem;font-weight:700;font-size:1.375rem;letter-spacing:-.01em}
+@media(min-width:640px){#loader .brand-row{font-size:1.625rem}}
+#loader .brand-row .icon{font-size:1.75rem;color:#2fbf6a}
+#loader .tagline{max-width:26ch;font-size:.875rem;color:rgba(255,255,255,.5)}
+#loader .progress-block{width:min(22rem,72vw);display:flex;flex-direction:column;gap:.75rem}
+#loader .track{height:2px;background:rgba(255,255,255,.12);position:relative;border-radius:2px;overflow:hidden}
+#loader .fill{height:100%;background:linear-gradient(90deg,#1e6fd9,#2fbf6a);width:0%;transition:width .1s ease-out}
+#loader .prow{display:flex;justify-content:space-between;font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4)}
+#loader .count{color:rgba(255,255,255,.75);font-variant-numeric:tabular-nums}
+
+/* ---- header ---- */
+header#site-header{position:fixed;inset-inline:0;top:0;z-index:50;background:rgba(10,14,20,0);border-bottom:1px solid transparent;transition:background .4s,border-color .4s;opacity:0;transform:translateY(-12px)}
+header#site-header.in{opacity:1;transform:translateY(0);transition:opacity .6s,transform .6s}
+header#site-header.scrolled{background:rgba(10,14,20,.86);backdrop-filter:blur(10px);border-color:var(--line)}
+header#site-header .inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.25rem}
+@media(min-width:640px){header#site-header .inner{padding:1.1rem 2rem}}
+.brand-btn{display:flex;align-items:center;gap:.55rem;font-size:1.0625rem;font-weight:700;letter-spacing:-.01em}
+.brand-btn .icon{font-size:1.5rem;color:#2fbf6a}
+nav.primary-nav{display:none}
+@media(min-width:1024px){nav.primary-nav{display:block}}
+nav.primary-nav ul{display:flex;gap:1.75rem;font-size:.875rem;font-weight:500}
+nav.primary-nav a,nav.primary-nav button{opacity:.75;transition:opacity .25s,color .25s}
+nav.primary-nav a:hover,nav.primary-nav button:hover{opacity:1;color:#3ecf7a}
+.header-right{display:flex;align-items:center;gap:.75rem}
+.phone-chip{display:none;align-items:center;gap:.45rem;font-size:.8125rem;font-weight:600;color:#cfd6e0}
+.phone-chip .icon{color:#3ecf7a;font-size:1rem}
+@media(min-width:768px){.phone-chip{display:flex}}
+.cta-pill{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius-pill);background:linear-gradient(90deg,#1e6fd9,#2fbf6a);color:#fff;font-size:.8125rem;font-weight:700;padding:.65rem 1.1rem;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.cta-pill:hover{transform:scale(1.04);box-shadow:0 8px 24px -8px rgba(47,191,106,.5)}
+.menu-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:.75rem;padding:.55rem .85rem;font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+@media(min-width:1024px){.menu-btn{display:none}}
+
+/* ---- hero ---- */
+#home{position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(120% 90% at 75% 15%,#0f1a2a 0%,#0a0e14 55%,#070a0f 100%)}
+#hero-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;display:block}
+.hero-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(6,9,14,.35),transparent 30%,transparent 60%,rgba(6,9,14,.9))}
+.hero-content{position:relative;z-index:5;display:flex;flex-direction:column;gap:2rem;padding:9rem 1.25rem 4rem;min-height:100lvh;justify-content:center}
+@media(min-width:640px){.hero-content{padding-inline:2rem}}
+@media(min-width:1024px){.hero-content{padding:9rem 2rem 5rem}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#3ecf7a}
+.hero-eyebrow .dot{width:.4rem;height:.4rem;border-radius:9999px;background:#3ecf7a;box-shadow:0 0 12px #3ecf7a}
+.hero-h1{max-width:16ch;font-size:2.5rem;font-weight:800;line-height:1.02;letter-spacing:-.02em;color:#fff}
+@media(min-width:640px){.hero-h1{font-size:3.5rem}}
+@media(min-width:1024px){.hero-h1{font-size:4.25rem}}
+.hero-sub{max-width:40ch;font-size:1rem;line-height:1.6;color:var(--muted)}
+@media(min-width:640px){.hero-sub{font-size:1.125rem}}
+.cta-row{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:.5rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;border-radius:var(--radius-pill);font-size:.9375rem;font-weight:700;padding:.9rem 1.6rem;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.btn:hover{transform:scale(1.03)}
+.btn.grad{background:linear-gradient(90deg,#1e6fd9,#2fbf6a);color:#fff}
+.btn.outline{border:1px solid var(--line);color:#e9edf3}
+.btn.outline:hover{border-color:rgba(255,255,255,.3)}
+.trust-strip{display:flex;flex-wrap:wrap;gap:1.5rem 2.25rem;margin-top:1rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.trust-item{display:flex;flex-direction:column;gap:.15rem}
+.trust-item .n{font-size:1.375rem;font-weight:800;color:#fff}
+.trust-item .l{font-size:.75rem;color:var(--muted)}
+.scroll-cue{position:absolute;left:50%;bottom:1.5rem;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:.4rem;font-size:.6875rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);opacity:0;transition:opacity .8s}
+.scroll-cue.in{opacity:1}
+.scroll-cue .line{width:1px;height:1.75rem;background:linear-gradient(#3ecf7a,transparent);animation:cue-pulse 1.8s ease-in-out infinite}
+@keyframes cue-pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ---- section shared ---- */
+section{position:relative}
+.section-pad{padding:5rem 1.25rem}
+@media(min-width:640px){.section-pad{padding-inline:2rem}}
+@media(min-width:1024px){.section-pad{padding-block:7rem}}
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#3ecf7a}
+.eyebrow .dot{width:.4rem;height:.4rem;border-radius:9999px;background:#3ecf7a}
+.section-h2{margin-top:.85rem;font-size:2rem;font-weight:800;letter-spacing:-.02em;color:#fff;max-width:20ch}
+@media(min-width:640px){.section-h2{font-size:2.75rem}}
+.section-lead{margin-top:1rem;max-width:52ch;font-size:1rem;line-height:1.65;color:var(--muted)}
+
+/* ---- about ---- */
+#about{background:var(--panel)}
+#about .grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+@media(min-width:1024px){#about .grid{grid-template-columns:1fr 1fr;gap:4rem}}
+.about-photo{position:relative;border-radius:var(--radius-card);overflow:hidden;aspect-ratio:4/3;box-shadow:0 0 0 1px var(--line)}
+.about-photo img{width:100%;height:100%;object-fit:cover}
+.about-photo .badge{position:absolute;left:1.25rem;bottom:1.25rem;background:rgba(10,14,20,.75);backdrop-filter:blur(6px);border-radius:var(--radius-control);padding:.75rem 1rem;font-size:.8125rem;font-weight:600;box-shadow:0 0 0 1px var(--line)}
+.about-body p{margin-top:1.1rem;font-size:1rem;line-height:1.7;color:var(--muted)}
+.about-body p strong{color:#e9edf3;font-weight:700}
+.about-quote{margin-top:1.75rem;padding-left:1.1rem;border-left:2px solid #2fbf6a;font-size:1.0625rem;font-weight:700;color:#fff}
+
+/* ---- process/services ---- */
+#services{background:var(--bg)}
+.process-list{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border-radius:var(--radius-card);overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+@media(min-width:900px){.process-list{grid-template-columns:repeat(5,1fr)}}
+.process-step{background:var(--panel);padding:1.75rem 1.5rem;display:flex;flex-direction:column;gap:.75rem;transition:background .3s}
+.process-step:hover{background:var(--panel-2)}
+.process-step .num{font-size:.75rem;font-weight:700;color:#3ecf7a;letter-spacing:.05em}
+.process-step .badge{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:.875rem;background:linear-gradient(135deg,#1e6fd9,#2fbf6a);color:#fff}
+.process-step h3{font-size:1.0625rem;font-weight:700;color:#fff}
+.process-step p{font-size:.8125rem;line-height:1.55;color:var(--muted)}
+.norms-row{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.75rem}
+.norm-chip{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.55rem 1rem;font-size:.8125rem;font-weight:600;color:var(--steel)}
+.norm-chip .dot{width:.35rem;height:.35rem;border-radius:9999px;background:#1e6fd9}
+
+/* ---- stats band ---- */
+#stats-section{background:linear-gradient(120deg,#0d1b12,#0a0e14 60%)}
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-num{font-size:2.5rem;font-weight:800;letter-spacing:-.02em;background:linear-gradient(90deg,#fff,#8be6ac);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(min-width:640px){.stat-num{font-size:3rem}}
+.stat-label{margin-top:.5rem;font-size:.8125rem;color:var(--muted)}
+
+/* ---- zone ---- */
+#zone{background:var(--panel)}
+.zone-grid{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:2.5rem}
+@media(min-width:900px){.zone-grid{grid-template-columns:1fr 1fr}}
+.zone-list{display:flex;flex-direction:column;gap:.75rem}
+.zone-row{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-radius:var(--radius-control);background:var(--panel-2);box-shadow:0 0 0 1px var(--line)}
+.zone-row .name{font-weight:700;font-size:.9375rem}
+.zone-row .tag{font-size:.75rem;color:var(--muted)}
+.city-chips{display:flex;flex-wrap:wrap;gap:.6rem;align-content:flex-start}
+.city-chip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--line);border-radius:var(--radius-pill);padding:.6rem 1rem;font-size:.8125rem;font-weight:600;color:var(--ink)}
+.city-chip .dot{width:.3rem;height:.3rem;border-radius:9999px;background:#2fbf6a}
+
+/* ---- réalisations ---- */
+#works{background:var(--bg)}
+.portfolio-grid{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.portfolio-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1024px){.portfolio-grid{grid-template-columns:repeat(3,1fr)}}
+.portfolio-card{position:relative;border-radius:var(--radius-card-sm);overflow:hidden;aspect-ratio:4/3;box-shadow:0 0 0 1px var(--line);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.portfolio-card:hover{transform:translateY(-4px)}
+.portfolio-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.portfolio-card:hover img{transform:scale(1.06)}
+.portfolio-card .overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:1.1rem;background:linear-gradient(180deg,transparent 40%,rgba(6,9,14,.92))}
+.portfolio-card .overlay span{font-size:.9375rem;font-weight:700;color:#fff}
+
+/* ---- références ---- */
+#references{background:var(--panel)}
+.ref-grid{margin-top:3rem;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);box-shadow:0 0 0 1px var(--line);border-radius:var(--radius-card-sm);overflow:hidden}
+@media(min-width:640px){.ref-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.ref-grid{grid-template-columns:repeat(6,1fr)}}
+.ref-tile{background:var(--panel-2);aspect-ratio:1.6;display:flex;align-items:center;justify-content:center;padding:1.1rem;transition:background .3s}
+.ref-tile:hover{background:#182234}
+.ref-tile img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1) brightness(1.5) contrast(.9);opacity:.7;transition:filter .3s,opacity .3s}
+.ref-tile:hover img{filter:none;opacity:1}
+
+/* ---- pricing reassurance + FAQ ---- */
+#pricing{background:var(--bg)}
+.pricing-grid{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.pricing-grid{grid-template-columns:repeat(4,1fr)}}
+.pricing-card{border-radius:var(--radius-card-sm);background:var(--panel);box-shadow:0 0 0 1px var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:.85rem;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .3s}
+.pricing-card:hover{transform:translateY(-4px);background:var(--panel-2)}
+.pricing-card .badge{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:.875rem;background:linear-gradient(135deg,#1e6fd9,#2fbf6a);color:#fff}
+.pricing-card h3{font-size:1rem;font-weight:700;color:#fff}
+.pricing-card p{font-size:.8125rem;line-height:1.55;color:var(--muted)}
+.faq-wrap{margin-top:3.5rem;max-width:44rem}
+.faq-list{display:flex;flex-direction:column;gap:.75rem;margin-top:1rem}
+.faq-item{border-radius:var(--radius-control);background:var(--panel);box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.25rem;font-size:.9375rem;font-weight:700;color:#fff}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .plus{flex-shrink:0;width:1.5rem;height:1.5rem;display:grid;place-items:center;border-radius:9999px;background:var(--panel-2);color:#3ecf7a;font-size:1rem;transition:transform .3s}
+.faq-item[open] summary .plus{transform:rotate(45deg)}
+.faq-item .faq-a{padding:0 1.25rem 1.1rem;font-size:.875rem;line-height:1.6;color:var(--muted)}
+.price-trust-row{display:flex;flex-wrap:wrap;gap:.6rem 1.1rem;margin-bottom:1.25rem}
+.price-trust-row span{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:700;color:#3ecf7a}
+.price-trust-row .icon{font-size:.875rem}
+
+/* ---- devis / réservation form ---- */
+#devis{background:var(--bg)}
+.devis-wrap{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:2.5rem}
+@media(min-width:1024px){.devis-wrap{grid-template-columns:.85fr 1.15fr}}
+.devis-info{display:flex;flex-direction:column;gap:1.5rem}
+.devis-info-card{border-radius:var(--radius-card-sm);background:var(--panel);box-shadow:0 0 0 1px var(--line);padding:1.5rem}
+.devis-info-card h3{font-size:.9375rem;font-weight:700;color:#fff;margin-bottom:.75rem}
+.devis-info-card ul{display:flex;flex-direction:column;gap:.6rem}
+.devis-info-card li{display:flex;align-items:center;gap:.65rem;font-size:.875rem;color:var(--muted)}
+.devis-info-card .icon{color:#3ecf7a;font-size:1.05rem;flex-shrink:0}
+.devis-form{border-radius:var(--radius-card);background:var(--panel);box-shadow:0 0 0 1px var(--line);padding:1.75rem}
+@media(min-width:640px){.devis-form{padding:2.25rem}}
+.client-toggle{display:flex;gap:.6rem;margin-bottom:1.5rem}
+.client-toggle button{flex:1;padding:.85rem;border-radius:var(--radius-control);border:1px solid var(--line);font-size:.875rem;font-weight:700;color:var(--muted);transition:all .25s}
+.client-toggle button.active{background:linear-gradient(90deg,#1e6fd9,#2fbf6a);color:#fff;border-color:transparent}
+.form-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.form-grid{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:.4rem}
+.field.full{grid-column:1/-1}
+.field label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:var(--panel-2);border-radius:var(--radius-control);padding:.75rem .9rem;font-size:.875rem;color:#fff;outline:none;font-family:inherit;transition:border-color .2s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#3ecf7a}
+.field textarea{resize:none}
+.field.company{display:none}
+.field.company.show{display:flex}
+.consent-row{display:flex;align-items:flex-start;gap:.65rem;margin-top:.25rem}
+.consent-row input{margin-top:.2rem}
+.consent-row label{font-size:.75rem;line-height:1.5;color:var(--muted)}
+.form-note{margin-top:.5rem;font-size:.75rem;color:var(--subtle)}
+.devis-submit{margin-top:1.5rem;width:100%;justify-content:center}
+.devis-success{display:none;flex-direction:column;align-items:center;text-align:center;gap:1rem;padding:2rem 0}
+.devis-success.show{display:flex}
+.devis-success .badge{width:3.5rem;height:3.5rem;display:grid;place-items:center;border-radius:9999px;background:linear-gradient(135deg,#1e6fd9,#2fbf6a);color:#fff;font-size:1.5rem}
+.devis-success h3{font-size:1.25rem;font-weight:700;color:#fff}
+.devis-success p{max-width:32ch;font-size:.875rem;color:var(--muted)}
+#request-form.hide{display:none}
+
+/* ---- footer ---- */
+footer#site-footer{background:#05070b;border-top:1px solid var(--line)}
+footer#site-footer .shell{padding:4rem 1.25rem 2rem}
+@media(min-width:640px){footer#site-footer .shell{padding-inline:2rem}}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:2.5rem}
+@media(min-width:768px){.footer-grid{grid-template-columns:1.2fr 1fr 1fr}}
+.footer-brand .brand-row{display:flex;align-items:center;gap:.55rem;font-size:1.0625rem;font-weight:700}
+.footer-brand .brand-row .icon{font-size:1.5rem;color:#2fbf6a}
+.footer-brand p{margin-top:.85rem;max-width:26rem;font-size:.875rem;line-height:1.6;color:var(--muted)}
+.footer-col-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--subtle);margin-bottom:1rem}
+.footer-col ul{display:flex;flex-direction:column;gap:.65rem}
+.footer-col a,.footer-col span{font-size:.875rem;color:var(--muted)}
+.footer-col a:hover{color:#3ecf7a}
+.legal-bar{margin-top:3rem;padding-top:1.75rem;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:.75rem;font-size:.75rem;color:var(--subtle)}
+@media(min-width:640px){.legal-bar{flex-direction:row;justify-content:space-between}}
+.legal-links{display:flex;gap:1.25rem}
+.legal-links a:hover{color:#3ecf7a}
+
+/* ---- mobile nav overlay ---- */
+#nav-menu{position:fixed;inset:0;z-index:115;display:flex;flex-direction:column;background:#05070b;color:#fff;opacity:0;pointer-events:none;transition:opacity .4s}
+#nav-menu.open{opacity:1;pointer-events:auto}
+#nav-menu .topbar{display:flex;align-items:center;justify-content:space-between;padding:1.25rem}
+#nav-menu .brand-row{display:flex;align-items:center;gap:.55rem;font-size:1.0625rem;font-weight:700}
+#nav-menu .brand-row .icon{font-size:1.375rem;color:#2fbf6a}
+.close-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:.75rem;padding:.5rem 1rem;font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.7)}
+#nav-menu nav{flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 1.25rem}
+#nav-menu ul{display:flex;flex-direction:column;gap:.25rem}
+.menu-item{display:flex;gap:1rem;align-items:baseline;padding-block:.6rem;font-size:2rem;font-weight:800;letter-spacing:-.02em;width:100%;text-align:left;transform:translateY(1rem);opacity:0;transition:transform .5s ease-out,opacity .5s ease-out}
+#nav-menu.open .menu-item{transform:translateY(0);opacity:1}
+.menu-item .n{font-size:.9375rem;font-weight:500;color:rgba(255,255,255,.3)}
+.menu-item .lbl{color:rgba(255,255,255,.85)}
+.menu-bottom{padding:1.5rem 1.25rem;border-top:1px solid var(--line);font-size:.8125rem;color:var(--muted)}
+
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js",
+    "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"
+  }
+}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<div id="loader" role="status" aria-label="Chargement">
+  <div class="center">
+    <div class="brand-row"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5M20 21V5M4 9h16M4 15h16M8 5v-.5a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 1 16 4.5V5"/></svg> Engels Échafaudages</div>
+    <p class="tagline">L'échafaudage à la hauteur de vos projets.</p>
+  </div>
+  <div class="progress-block">
+    <div class="track"><div class="fill" id="loader-fill"></div></div>
+    <div class="prow"><span>Chargement</span><span class="count" id="loader-count">000</span></div>
+  </div>
+</div>
+
+<header id="site-header">
+  <div class="shell inner">
+    <button class="brand-btn" data-scroll="home"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5M20 21V5M4 9h16M4 15h16M8 5v-.5a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 1 16 4.5V5"/></svg> Engels Échafaudages</button>
+    <nav class="primary-nav" aria-label="Principal">
+      <ul>
+        <li><a href="#home" data-scroll="home">Accueil</a></li>
+        <li><a href="#services" data-scroll="services">Services</a></li>
+        <li><a href="#works" data-scroll="works">Réalisations</a></li>
+        <li><a href="#references" data-scroll="references">Références</a></li>
+        <li><a href="#zone" data-scroll="zone">Zone</a></li>
+        <li><a href="#contact" data-scroll="contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="header-right">
+      <a href="tel:+3265704053" class="phone-chip"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>065 70 40 53</a>
+      <a href="#devis" class="cta-pill" data-scroll="devis">Devis gratuit</a>
+      <button class="menu-btn" id="open-nav-menu" aria-haspopup="true"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg> Menu</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section id="home">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-vignette" aria-hidden="true"></div>
+    <div class="hero-content shell">
+      <p class="hero-eyebrow rv-fade" data-delay="150"><span class="dot"></span>Location &amp; montage d'échafaudages</p>
+      <h1 class="hero-h1" id="hero-h1" data-reveal-lines data-delay="220" data-stagger="110">
+        <span class="rv-line"><span class="rv-line-inner">L'échafaudage</span></span>
+        <span class="rv-line"><span class="rv-line-inner">à la hauteur de</span></span>
+        <span class="rv-line"><span class="rv-line-inner">vos projets</span></span>
+      </h1>
+      <p class="hero-sub rv-fade" data-delay="500">Location de matériel d'échafaudage avec montage et services complets, partout en Belgique et dans le Nord de la France.</p>
+      <div class="cta-row rv-fade" data-delay="620">
+        <a href="#devis" class="btn grad" data-scroll="devis">Demander un devis gratuit</a>
+        <a href="#services" class="btn outline" data-scroll="services">Découvrir nos services</a>
+      </div>
+      <div class="trust-strip rv-fade" data-delay="750">
+        <div class="trust-item"><span class="n" id="trust-chantiers">450+</span><span class="l">chantiers par an</span></div>
+        <div class="trust-item"><span class="n">3</span><span class="l">normes européennes EN 12810 · 12811 · 13374</span></div>
+        <div class="trust-item"><span class="n" id="trust-years">14</span><span class="l">ans d'activité, depuis 2012</span></div>
+      </div>
+    </div>
+    <div class="scroll-cue" id="scroll-cue"><span>Découvrir</span><span class="line" aria-hidden="true"></span></div>
+  </section>
+
+  <section id="about" class="section-pad">
+    <div class="shell grid">
+      <div class="about-photo rv-fade">
+        <img src="https://www.engels-echafaudages.be/wp-content/uploads/2018/11/Dartevelle-Binche.jpg" alt="Montage d'échafaudage Engels Échafaudages sur un chantier" loading="lazy">
+        <div class="badge">Depuis 2012 &middot; Le Roeulx, Belgique</div>
+      </div>
+      <div class="about-body">
+        <p class="eyebrow"><span class="dot"></span>À propos</p>
+        <h2 class="section-h2" data-reveal-words>Un loueur et installateur d'échafaudages de confiance, pour <span style="color:var(--muted)">professionnels comme particuliers.</span></h2>
+        <p class="rv-fade" data-delay="100">Cette activité s'est créée au sein de la société Répamine en 2012. Connaissant une croissance forte et continue, <strong>Bernard Engels s'en est rendu acquéreur en mars 2017.</strong></p>
+        <p class="rv-fade" data-delay="200">Accompagné de toute son équipe, Engels Echafaudages développe au quotidien son activité de loueur et d'installateur d'échafaudages, tout en gardant un service de qualité destiné aux professionnels comme aux particuliers.</p>
+        <p class="about-quote rv-fade" data-delay="300">« Votre sécurité : notre métier. »</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Nos services</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Location d'échafaudages de A à Z</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Du devis gratuit à la réception du chantier, nous gérons l'ensemble du processus. De 20 m² à 5000 m², nos équipes réalisent des installations fiables, dans le respect des délais et des normes européennes en vigueur.</p>
+      <ul class="process-list" id="process-list"></ul>
+      <div class="norms-row" id="norms-row"></div>
+    </div>
+  </section>
+
+  <section id="stats-section" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Dynamique et efficace</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Une équipe qui tient ses délais</span></span></h2>
+      <ul class="stats-grid" id="stats-grid" style="margin-top:3rem"></ul>
+    </div>
+  </section>
+
+  <section id="zone" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Zone d'intervention</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Implantés au Roeulx, actifs bien au-delà</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Situation idéale proche des grands axes autoroutiers, ce qui nous permet de servir très rapidement les provinces voisines ainsi que le Nord de la France.</p>
+      <div class="zone-grid">
+        <div class="zone-list" id="zone-list"></div>
+        <div>
+          <p class="footer-col-title rv-fade">Villes fréquemment desservies</p>
+          <div class="city-chips" id="city-chips"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Réalisations</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Des petits montages aux grands chantiers</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Des escaliers et couloirs d'accès aux tours et montages événementiels — un coup de fil et nous étudions votre projet, qu'il soit simple ou élaboré.</p>
+      <ul class="portfolio-grid" id="portfolio-grid"></ul>
+    </div>
+  </section>
+
+  <section id="references" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Références</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Des clients de tous horizons</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Des grandes entreprises aux petites structures — la qualité de nos montages reste identique, quel que soit le chantier.</p>
+      <div class="ref-grid" id="ref-grid"></div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Transparence</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Un prix juste, sans mauvaise surprise</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Le coût d'un échafaudage peut sembler flou quand on n'est pas du métier. Voici comment on s'assure que vous ne payez jamais plus que nécessaire.</p>
+      <ul class="pricing-grid" id="pricing-grid"></ul>
+      <div class="faq-wrap">
+        <p class="footer-col-title rv-fade">Vos questions sur le prix</p>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="devis" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Devis &amp; réservation</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Demandez votre devis gratuit</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Décrivez votre chantier, nous revenons vers vous avec une offre compétitive dans les plus brefs délais.</p>
+      <div class="devis-wrap">
+        <div class="devis-info rv-fade" data-delay="200">
+          <div class="devis-info-card">
+            <h3>Coordonnées directes</h3>
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+3265704053">+32 65 70 40 53</a></li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><a href="mailto:info@engels-echafaudages.be">info@engels-echafaudages.be</a></li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span>Rue de la Station 142, Hall 41 — B-7070 Le Roeulx</span></li>
+            </ul>
+          </div>
+          <div class="devis-info-card">
+            <h3>Comment ça se passe</h3>
+            <ul>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Vous décrivez votre chantier ci-contre</span></li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Notre équipe revient vers vous avec un devis</span></li>
+              <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>On planifie ensemble transport, montage et démontage</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="devis-form rv-fade" data-delay="300">
+          <div class="price-trust-row">
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Devis gratuit</span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sans engagement</span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aucun frais caché</span>
+          </div>
+          <div class="client-toggle" role="group" aria-label="Vous êtes">
+            <button type="button" class="active" data-client="particulier">Particulier</button>
+            <button type="button" data-client="professionnel">Professionnel</button>
+          </div>
+          <form id="request-form">
+            <div class="form-grid">
+              <div class="field full"><label for="f-name">Nom de contact *</label><input type="text" id="f-name" required placeholder="Votre nom"></div>
+              <div class="field company"><label for="f-company">Nom de la société *</label><input type="text" id="f-company" placeholder="Votre société"></div>
+              <div class="field company"><label for="f-vat">Numéro de TVA *</label><input type="text" id="f-vat" placeholder="BE 0000.000.000"></div>
+              <div class="field"><label for="f-email">Adresse e-mail *</label><input type="email" id="f-email" required placeholder="vous@exemple.com"></div>
+              <div class="field"><label for="f-phone">Numéro de téléphone *</label><input type="tel" id="f-phone" required placeholder="+32 ..."></div>
+              <div class="field full"><label for="f-work">Type de travail *</label>
+                <select id="f-work" required>
+                  <option value="">Choisissez...</option>
+                  <option>Façade / ravalement</option>
+                  <option>Peinture</option>
+                  <option>Toiture</option>
+                  <option>Construction neuve</option>
+                  <option>Rénovation</option>
+                  <option>Événementiel</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+              <div class="field full"><label for="f-address">Adresse du chantier *</label><input type="text" id="f-address" required placeholder="Rue et numéro"></div>
+              <div class="field"><label for="f-zip">Code postal *</label><input type="text" id="f-zip" required placeholder="7070"></div>
+              <div class="field"><label for="f-city">Ville *</label><input type="text" id="f-city" required placeholder="Le Roeulx"></div>
+              <div class="field"><label for="f-height">Hauteur du bâtiment</label><input type="text" id="f-height" placeholder="ex : 8 m"></div>
+              <div class="field"><label for="f-width">Largeur du bâtiment</label><input type="text" id="f-width" placeholder="ex : 12 m"></div>
+              <div class="field full"><label for="f-duration">Durée approximative de la location *</label>
+                <select id="f-duration" required>
+                  <option value="">Choisissez...</option>
+                  <option>Moins d'1 semaine</option>
+                  <option>1 à 4 semaines</option>
+                  <option>1 à 3 mois</option>
+                  <option>Plus de 3 mois</option>
+                </select>
+              </div>
+              <div class="field"><label for="f-start">Date de début souhaitée</label><input type="date" id="f-start"></div>
+              <div class="field"><label for="f-end">Date de fin souhaitée</label><input type="date" id="f-end"></div>
+              <div class="field full"><label for="f-message">Votre message</label><textarea id="f-message" rows="4" placeholder="Décrivez votre projet en quelques mots"></textarea></div>
+            </div>
+            <div class="consent-row">
+              <input type="checkbox" id="f-consent" required>
+              <label for="f-consent">J'autorise Engels Echafaudages à traiter mes données à caractère personnel dans le cadre de cette demande. *</label>
+            </div>
+            <button type="submit" class="btn grad devis-submit" id="submit-btn"><span id="submit-label">Envoyer ma demande de devis</span></button>
+            <p class="form-note">En cliquant sur « Envoyer », votre messagerie s'ouvrira avec la demande pré-remplie à destination de info@engels-echafaudages.be.</p>
+          </form>
+          <div class="devis-success" id="devis-success">
+            <div class="badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <h3>Votre messagerie s'est ouverte</h3>
+            <p>Il ne vous reste qu'à cliquer sur « Envoyer » dans votre client mail pour transmettre votre demande à notre équipe.</p>
+            <button type="button" class="btn outline" id="devis-success-close">Nouvelle demande</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer">
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-row"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5M20 21V5M4 9h16M4 15h16M8 5v-.5a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 1 16 4.5V5"/></svg> Engels Échafaudages</div>
+        <p>Location de matériel d'échafaudage avec montage et services, pour professionnels et particuliers, en Belgique et dans le Nord de la France.</p>
+      </div>
+      <div class="footer-col" id="contact">
+        <p class="footer-col-title">Coordonnées</p>
+        <ul>
+          <li><span>Rue de la Station 142, Hall 41</span></li>
+          <li><span>B-7070 Le Roeulx, Belgique</span></li>
+          <li><a href="tel:+3265704053">+32 65 70 40 53</a></li>
+          <li><a href="mailto:info@engels-echafaudages.be">info@engels-echafaudages.be</a></li>
+          <li><span>TVA/N° entreprise 0671.674.124</span></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Navigation</p>
+        <ul id="footer-nav"></ul>
+      </div>
+    </div>
+    <div class="legal-bar">
+      <span>&copy; 2025 Engels Échafaudages SPRL. Tous droits réservés.</span>
+      <div class="legal-links">
+        <a href="#">Conditions générales</a>
+        <a href="#">Politique de confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="nav-menu" role="dialog" aria-modal="true" aria-label="Menu du site">
+  <div class="topbar shell">
+    <div class="brand-row"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5M20 21V5M4 9h16M4 15h16M8 5v-.5a1.5 1.5 0 0 1 1.5-1.5h5A1.5 1.5 0 0 1 16 4.5V5"/></svg> Engels Échafaudages</div>
+    <button class="close-btn" id="close-nav-menu"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg> Fermer</button>
+  </div>
+  <nav><ul id="menu-items"></ul></nav>
+  <div class="menu-bottom">065 70 40 53 &middot; info@engels-echafaudages.be</div>
+</div>
+
+<script type="module">
+import * as THREE from "three";
+import Lenis from "lenis";
+// ==== engine ====
+
+// ===================== shared engine: scroll lock, adaptive grid, reveals, clock =====================
+// IS_LOCAL_BUILD / ASSET_MAP values below are rewritten by assemble.py at build time.
+const IS_LOCAL_BUILD = false;
+const ASSET_MAP = {"realisations/Dartevelle-Binche.jpg": "2018/11/Dartevelle-Binche.jpg", "realisations/Farina-La-Hestre-2.jpg": "2021/02/Farina-La-Hestre-2.jpg", "realisations/Roof-Construct-Tournai-2.jpg": "2021/02/Roof-Construct-Tournai-2.jpg", "realisations/Schindler-Gare-Namur-3.jpg": "2021/02/Schindler-Gare-Namur-3.jpg", "realisations/TP-Bat-Molenbeek-2.jpg": "2021/02/TP-Bat-Molenbeek-2.jpg", "realisations/TP-Home-Havinnes-2.jpg": "2021/02/TP-Home-Havinnes-2.jpg", "realisations/Team-Construct-Hoves-2-1.jpg": "2021/02/Team-Construct-Hoves-2-1.jpg", "realisations/Toiture-Doome.jpg": "2021/02/Toiture-Doome.jpg", "realisations/Tradeco-Ecaussines-2.jpg": "2021/02/Tradeco-Ecaussines-2.jpg", "references/logo-brion.jpg": "2017/07/logo-brion.jpg", "references/logo-cbd.jpg": "2017/07/logo-cbd.jpg", "references/logo-duchene.jpg": "2017/07/logo-duchene.jpg", "references/logo-matexi.jpg": "2017/07/logo-matexi.jpg", "references/logo-sncb.jpg": "2017/07/logo-sncb.jpg", "references/logo-sotraba.jpg": "2017/07/logo-sotraba.jpg", "references/logo-t-palm.jpg": "2017/07/logo-t-palm.jpg", "references/logo-team-construct.jpg": "2017/07/logo-team-construct.jpg", "references/logo-thomas-piron-batiment.jpg": "2017/07/logo-thomas-piron-batiment.jpg", "references/FIDEBAT-site.png": "2018/11/FIDEBAT-site.png", "references/G-line-Construct-site.png": "2018/11/G-line-Construct-site.png", "references/interconstruct-site.png": "2018/11/interconstruct-site.png", "references/lixon-site.png": "2018/11/lixon-site.png", "references/Aerogommage.png": "2021/02/Aerogommage.png", "references/Balcaen-et-fils.png": "2021/02/Balcaen-et-fils.png", "references/Engie-Fabricom.jpg": "2021/02/Engie-Fabricom.jpg", "references/Favier.jpg": "2021/02/Favier.jpg", "references/Wanty.jpg": "2021/02/Wanty.jpg"};
+function asset(key) {
+  if (IS_LOCAL_BUILD) return `./assets/${key}`;
+  return `https://www.engels-echafaudages.be/wp-content/uploads/${ASSET_MAP[key] || key}`;
+}
+
+let ready = false;
+const readyListeners = [];
+function setReady() {
+  ready = true;
+  readyListeners.forEach((cb) => cb());
+}
+function onReady(cb) {
+  if (ready) cb();
+  else readyListeners.push(cb);
+}
+
+// ---- adaptive grid ----
+function applyAdaptiveGrid() {
+  const FONT_BASE = 16, baseWidth = 1920, coef = 0.6666;
+  const w = window.innerWidth;
+  const widthReduction = ((baseWidth - w) / baseWidth) * 100;
+  const size = FONT_BASE - (FONT_BASE * (widthReduction * coef)) / 100;
+  if (size > FONT_BASE) document.documentElement.style.fontSize = size + "px";
+  else document.documentElement.style.removeProperty("font-size");
+}
+
+// ---- scroll lock ----
+let lenisInstance = null;
+function setLenis(l) { lenisInstance = l; }
+let lockCount = 0;
+function stopScroll() {
+  lockCount++;
+  lenisInstance?.stop();
+  document.documentElement.style.position = "relative";
+  document.documentElement.style.overflow = "hidden";
+  document.documentElement.style.height = "100%";
+}
+function startScroll() {
+  lockCount = Math.max(0, lockCount - 1);
+  if (lockCount > 0) return;
+  lenisInstance?.start();
+  document.documentElement.style.removeProperty("position");
+  document.documentElement.style.removeProperty("overflow");
+  document.documentElement.style.removeProperty("height");
+}
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.pageYOffset;
+  if (lenisInstance) lenisInstance.scrollTo(top, { duration: 1.1 });
+  else window.scrollTo({ top, behavior: "smooth" });
+}
+
+// ---- reveal (IntersectionObserver, once) ----
+function revealOnce(el, rootMargin = "0px 0px -10% 0px") {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        onReady(() => {
+          const delay = Number(el.dataset.delay || 0);
+          setTimeout(() => el.classList.add("in"), delay);
+        });
+        io.disconnect();
+      }
+    }
+  }, { rootMargin });
+  io.observe(el);
+}
+
+function splitLines(el) {
+  const lines = el.querySelectorAll(".rv-line-inner");
+  const stagger = Number(el.dataset.stagger || 0);
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        onReady(() => {
+          const baseDelay = Number(el.dataset.delay || 0);
+          lines.forEach((line, i) => {
+            setTimeout(() => line.parentElement.classList.add("in"), baseDelay + i * stagger);
+          });
+        });
+        io.disconnect();
+      }
+    }
+  }, { rootMargin: "0px 0px -10% 0px" });
+  io.observe(el);
+}
+
+function splitWords(el) {
+  const raw = el.textContent;
+  const original = document.createElement("div");
+  original.innerHTML = el.innerHTML;
+  el.setAttribute("aria-label", raw);
+  el.innerHTML = "";
+  const walk = (source, target) => {
+    source.childNodes.forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent.split(/(\s+)/).forEach((chunk) => {
+          if (!chunk) return;
+          if (/^\s+$/.test(chunk)) { target.appendChild(document.createTextNode(chunk)); return; }
+          const span = document.createElement("span");
+          span.className = "rv-word";
+          span.textContent = chunk;
+          span.setAttribute("aria-hidden", "true");
+          target.appendChild(span);
+        });
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const clone = node.cloneNode(false);
+        target.appendChild(clone);
+        walk(node, clone);
+      }
+    });
+  };
+  walk(original, el);
+  const words = el.querySelectorAll(".rv-word");
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        onReady(() => {
+          words.forEach((w, i) => setTimeout(() => w.classList.add("in"), i * 35));
+        });
+        io.disconnect();
+      }
+    }
+  }, { rootMargin: "0px 0px -10% 0px" });
+  io.observe(el);
+}
+
+// ---- scroll-progress driven count-up (used for real published stats only) ----
+function countUp(el, target, opts = {}) {
+  const suffix = opts.suffix || "";
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        onReady(() => {
+          const start = performance.now();
+          const duration = 1400;
+          function tick(now) {
+            const t = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+        io.disconnect();
+      }
+    }
+  }, { rootMargin: "0px 0px -15% 0px" });
+  io.observe(el);
+}
+
+// ==== scaffold 3D ====
+
+const IS_MOBILE = matchMedia("(max-width: 768px), (pointer: coarse)").matches;
+const BAYS_X = IS_MOBILE ? 3 : 5;
+const BAYS_Z = IS_MOBILE ? 1 : 2;
+const LEVELS = IS_MOBILE ? 3 : 5;
+const BAY = 1.5;
+const LEVEL_H = 1.05;
+const POST_R = 0.032;
+const TUBE_R = 0.026;
+const STEEL = 0x9aa4b2;
+const STEEL_DARK = 0x5b6577;
+const GREEN = 0x2fbf6a;
+const BLUE = 0x1e6fd9;
+
+function buildUpParams(index, total, baseDelay = 0) {
+  return { delay: baseDelay + (index / total) * 1.1, dur: 0.6 + Math.random() * 0.25 };
+}
+
+function mountScaffold3D(canvas) {
+  if (!canvas || !window.WebGLRenderingContext) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+  } catch (e) { return; }
+  renderer.setClearColor(0x000000, 0);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  scene.add(new THREE.AmbientLight(0x8fa2c0, 0.55));
+  const key = new THREE.DirectionalLight(0xffffff, 1.4);
+  key.position.set(6, 9, 6);
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(BLUE, 0.9);
+  rim.position.set(-6, 3, -4);
+  scene.add(rim);
+  const accent = new THREE.PointLight(GREEN, 6, 14, 2);
+  accent.position.set(2, 2.5, 3);
+  scene.add(accent);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const width = BAYS_X * BAY;
+  const depth = BAYS_Z * BAY;
+  const height = LEVELS * LEVEL_H;
+  group.position.set(-width / 2, 0, -depth / 2);
+
+  const postGeo = new THREE.CylinderGeometry(POST_R, POST_R, LEVEL_H, 8);
+  const tubeGeoX = new THREE.CylinderGeometry(TUBE_R, TUBE_R, BAY, 6);
+  const tubeGeoZ = tubeGeoX;
+  const diagGeo = new THREE.CylinderGeometry(TUBE_R * 0.85, TUBE_R * 0.85, Math.hypot(BAY, LEVEL_H), 6);
+  const steelMat = new THREE.MeshStandardMaterial({ color: STEEL, metalness: 0.75, roughness: 0.32 });
+  const darkMat = new THREE.MeshStandardMaterial({ color: STEEL_DARK, metalness: 0.7, roughness: 0.4 });
+  const plankMat = new THREE.MeshStandardMaterial({ color: 0x2a3142, metalness: 0.2, roughness: 0.75 });
+  const railMat = new THREE.MeshStandardMaterial({ color: GREEN, metalness: 0.4, roughness: 0.3, emissive: GREEN, emissiveIntensity: 0.35 });
+
+  const animated = [];
+  function addAnimated(mesh, index, total, baseDelay) {
+    const targetY = mesh.position.y;
+    mesh.userData.anim = buildUpParams(index, total, baseDelay);
+    mesh.userData.targetY = targetY;
+    mesh.position.y = targetY - 1.4;
+    mesh.material = mesh.material.clone();
+    mesh.material.transparent = true;
+    mesh.material.opacity = 0;
+    group.add(mesh);
+    animated.push(mesh);
+  }
+
+  // ---- vertical standards ----
+  let totalPosts = (BAYS_X + 1) * (BAYS_Z + 1) * LEVELS;
+  let pi = 0;
+  for (let ix = 0; ix <= BAYS_X; ix++) {
+    for (let iz = 0; iz <= BAYS_Z; iz++) {
+      for (let lvl = 0; lvl < LEVELS; lvl++) {
+        const m = new THREE.Mesh(postGeo, steelMat);
+        m.position.set(ix * BAY, lvl * LEVEL_H + LEVEL_H / 2, iz * BAY);
+        addAnimated(m, pi++, totalPosts, 0);
+      }
+    }
+  }
+
+  // ---- horizontal ledgers (both directions, every level boundary) ----
+  const ledgerLevels = LEVELS + 1;
+  let totalLedgers = (BAYS_X * (BAYS_Z + 1) + (BAYS_X + 1) * BAYS_Z) * ledgerLevels;
+  let li = 0;
+  for (let lvl = 0; lvl < ledgerLevels; lvl++) {
+    const y = lvl * LEVEL_H;
+    for (let ix = 0; ix < BAYS_X; ix++) {
+      for (let iz = 0; iz <= BAYS_Z; iz++) {
+        const m = new THREE.Mesh(tubeGeoX, lvl === ledgerLevels - 1 ? darkMat : steelMat);
+        m.rotation.z = Math.PI / 2;
+        m.position.set(ix * BAY + BAY / 2, y, iz * BAY);
+        addAnimated(m, li++, totalLedgers, 0.35);
+      }
+    }
+    for (let ix = 0; ix <= BAYS_X; ix++) {
+      for (let iz = 0; iz < BAYS_Z; iz++) {
+        const m = new THREE.Mesh(tubeGeoZ, lvl === ledgerLevels - 1 ? darkMat : steelMat);
+        m.rotation.x = Math.PI / 2;
+        m.position.set(ix * BAY, y, iz * BAY + BAY / 2);
+        addAnimated(m, li++, totalLedgers, 0.35);
+      }
+    }
+  }
+
+  // ---- diagonal braces on the front face (iz = 0) ----
+  let diagCount = 0;
+  for (let ix = 0; ix < BAYS_X; ix += 2) diagCount += LEVELS;
+  let di = 0;
+  for (let ix = 0; ix < BAYS_X; ix += 2) {
+    for (let lvl = 0; lvl < LEVELS; lvl++) {
+      const m = new THREE.Mesh(diagGeo, darkMat);
+      const angle = Math.atan2(LEVEL_H, BAY);
+      m.rotation.z = Math.PI / 2 - angle;
+      m.position.set(ix * BAY + BAY / 2, lvl * LEVEL_H + LEVEL_H / 2, 0);
+      addAnimated(m, di++, diagCount, 0.6);
+    }
+  }
+
+  // ---- platforms every 2 levels ----
+  const plankGeo = new THREE.BoxGeometry(BAY * 0.94, 0.06, BAY * 0.94);
+  let plankTotal = 0;
+  for (let lvl = 1; lvl < ledgerLevels; lvl += 2) for (let ix = 0; ix < BAYS_X; ix++) for (let iz = 0; iz < BAYS_Z; iz++) plankTotal++;
+  let plI = 0;
+  for (let lvl = 1; lvl < ledgerLevels; lvl += 2) {
+    for (let ix = 0; ix < BAYS_X; ix++) {
+      for (let iz = 0; iz < BAYS_Z; iz++) {
+        const m = new THREE.Mesh(plankGeo, plankMat);
+        m.position.set(ix * BAY + BAY / 2, lvl * LEVEL_H + 0.03, iz * BAY + BAY / 2);
+        addAnimated(m, plI++, plankTotal, 0.85);
+      }
+    }
+  }
+
+  // ---- top guardrail perimeter ----
+  const railY = height + 0.55;
+  let railTotal = BAYS_X * 2 + BAYS_Z * 2;
+  let ri = 0;
+  for (let ix = 0; ix < BAYS_X; ix++) {
+    for (const iz of [0, BAYS_Z]) {
+      const m = new THREE.Mesh(tubeGeoX, railMat);
+      m.rotation.z = Math.PI / 2;
+      m.position.set(ix * BAY + BAY / 2, railY, iz * BAY);
+      addAnimated(m, ri++, railTotal, 1.05);
+    }
+  }
+  for (let iz = 0; iz < BAYS_Z; iz++) {
+    for (const ix of [0, BAYS_X]) {
+      const m = new THREE.Mesh(tubeGeoZ, railMat);
+      m.rotation.x = Math.PI / 2;
+      m.position.set(ix * BAY, railY, iz * BAY + BAY / 2);
+      addAnimated(m, ri++, railTotal, 1.05);
+    }
+  }
+
+  // ---- faint ground grid ----
+  const gridSize = Math.max(width, depth) * 2.4;
+  const grid = new THREE.GridHelper(gridSize, 24, 0x1e6fd9, 0x1a2130);
+  grid.position.set(width / 2, -0.02, depth / 2);
+  grid.material.transparent = true;
+  grid.material.opacity = 0.25;
+  group.add(grid);
+
+  // ---- ambient particles ----
+  const particleCount = IS_MOBILE ? 60 : 160;
+  const positions = new Float32Array(particleCount * 3);
+  for (let i = 0; i < particleCount; i++) {
+    positions[i * 3] = (Math.random() - 0.2) * width * 1.8;
+    positions[i * 3 + 1] = Math.random() * height * 1.3;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * depth * 3 + depth / 2;
+  }
+  const particleGeo = new THREE.BufferGeometry();
+  particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  const particleMat = new THREE.PointsMaterial({ color: 0x8be6ac, size: 0.02, transparent: true, opacity: 0.5, sizeAttenuation: true });
+  const particles = new THREE.Points(particleGeo, particleMat);
+  group.add(particles);
+
+  // ---- camera (aimed left of the structure's true center so the whole
+  // tower reads on the right two-thirds of the frame, clear of the hero text column) ----
+  const dist = Math.max(width, depth, height) * 1.5 + 2.8;
+  camera.position.set(width * 0.72, height * 0.6, dist);
+  const lookTarget = new THREE.Vector3(width * 0.12, height * 0.38, depth / 2);
+  camera.lookAt(lookTarget);
+
+  // ---- resize / mouse parallax ----
+  let cw = 0, ch = 0;
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    cw = Math.max(1, rect.width);
+    ch = Math.max(1, rect.height);
+    const ratio = Math.min(window.devicePixelRatio || 1, 2);
+    renderer.setPixelRatio(ratio);
+    renderer.setSize(cw, ch, false);
+    camera.aspect = cw / ch;
+    camera.updateProjectionMatrix();
+  }
+  const ro = new ResizeObserver(resize);
+  ro.observe(canvas);
+  resize();
+
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener("pointermove", (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  let inView = true;
+  const io = new IntersectionObserver((entries) => { for (const e of entries) inView = e.isIntersecting; });
+  io.observe(canvas);
+
+  const clock = new THREE.Clock();
+  let raf = null;
+  function tick() {
+    raf = requestAnimationFrame(tick);
+    if (!inView) return;
+    const t = clock.getElapsedTime();
+
+    for (const m of animated) {
+      const a = m.userData.anim;
+      if (a.done) continue;
+      const p = Math.min(1, Math.max(0, (t - a.delay) / a.dur));
+      const eased = 1 - Math.pow(1 - p, 3);
+      m.position.y = THREE.MathUtils.lerp(m.userData.targetY - 1.4, m.userData.targetY, eased);
+      m.material.opacity = eased;
+      if (p >= 1) { a.done = true; m.material.transparent = false; m.material.opacity = 1; }
+    }
+
+    group.rotation.y = t * 0.045 + mouseX * 0.18;
+    camera.position.y = height * 0.62 + mouseY * -0.35;
+    camera.lookAt(lookTarget);
+
+    particles.rotation.y = t * 0.01;
+
+    renderer.render(scene, camera);
+  }
+  raf = requestAnimationFrame(tick);
+
+  window.addEventListener("beforeunload", () => { if (raf) cancelAnimationFrame(raf); });
+}
+
+// ==== main ====
+
+// ===================== data (real content from engels-echafaudages.be) =====================
+const PROCESS = [
+  { n: "01", title: "Devis gratuit", desc: "Une offre compétitive dans les plus brefs délais, adaptée à votre chantier." },
+  { n: "02", title: "Conception des plans", desc: "Étude technique et plan de montage conforme aux normes européennes." },
+  { n: "03", title: "Transport", desc: "Livraison du matériel d'échafaudage directement sur votre chantier." },
+  { n: "04", title: "Montage", desc: "Installation soignée par nos équipes, de 20 m² à 5000 m²." },
+  { n: "05", title: "Démontage &amp; réception", desc: "Contrôle final, réception et démontage en fin de chantier." },
+];
+
+const NORMS = ["EN 12810", "EN 12811", "EN 13374"];
+
+const PRICING_POINTS = [
+  { title: "Devis 100% gratuit", desc: "Aucun frais pour recevoir votre offre, que vous donniez suite ou non." },
+  { title: "Sans engagement", desc: "Vous êtes libre d'accepter, de comparer ou de refuser — sans pression." },
+  { title: "Tout est inclus", desc: "Transport, montage, démontage et réception : le prix annoncé est le prix final." },
+  { title: "Réponse rapide", desc: "Une offre compétitive transmise dans les plus brefs délais." },
+];
+
+const FAQ = [
+  { q: "Combien coûte la location d'un échafaudage ?", a: "Le prix dépend de la surface, de la hauteur, de la durée de location et de la complexité du montage. C'est pourquoi chaque devis est calculé sur mesure pour votre chantier — jamais de tarif générique." },
+  { q: "Le transport et le montage sont-ils inclus dans le prix ?", a: "Oui. Notre devis reprend l'ensemble du service : transport, montage, démontage et réception. Le montant annoncé est bien le montant final, sans frais additionnels surprise." },
+  { q: "Dois-je payer pour obtenir un devis ?", a: "Non, jamais. Le devis est entièrement gratuit et ne vous engage à rien." },
+];
+
+const CURRENT_YEAR = new Date().getFullYear();
+const YEARS_ACTIVE = CURRENT_YEAR - 2012;
+
+const STATS = [
+  { value: 450, suffix: "+", label: "chantiers réalisés par an" },
+  { value: 5000, suffix: " m²", label: "surface max. installée (dès 20 m²)" },
+  { value: 3, suffix: "", label: "normes européennes respectées" },
+  { value: YEARS_ACTIVE, suffix: " ans", label: "d'expérience depuis 2012" },
+];
+
+const ZONES = [
+  { name: "Hainaut", tag: "Province de base" },
+  { name: "Brabant Wallon", tag: "Zone régulière" },
+  { name: "Namur", tag: "Zone régulière" },
+  { name: "Bruxelles", tag: "Zone régulière" },
+  { name: "Flandre (proche)", tag: "Sur demande" },
+  { name: "Nord de la France", tag: "Sur demande" },
+];
+
+const CITIES = ["Mons", "Ath", "Enghien", "La Louvière", "Namur", "Nivelles", "Le Roeulx"];
+
+const PORTFOLIO = [
+  { img: "realisations/Farina-La-Hestre-2.jpg", title: "Farina — La Hestre" },
+  { img: "realisations/Roof-Construct-Tournai-2.jpg", title: "Roof Construct — Tournai" },
+  { img: "realisations/Schindler-Gare-Namur-3.jpg", title: "Schindler — Gare de Namur" },
+  { img: "realisations/TP-Bat-Molenbeek-2.jpg", title: "Thomas &amp; Piron Bâtiment — Molenbeek" },
+  { img: "realisations/TP-Home-Havinnes-2.jpg", title: "Thomas &amp; Piron Home — Havinnes" },
+  { img: "realisations/Team-Construct-Hoves-2-1.jpg", title: "Team Construct — Hoves" },
+  { img: "realisations/Toiture-Doome.jpg", title: "Toiture Doome" },
+  { img: "realisations/Tradeco-Ecaussines-2.jpg", title: "Tradeco — Ecaussinnes" },
+];
+
+const REFERENCES = [
+  { img: "references/Wanty.jpg", name: "Wanty" },
+  { img: "references/logo-sncb.jpg", name: "SNCB" },
+  { img: "references/Engie-Fabricom.jpg", name: "Engie Fabricom" },
+  { img: "references/logo-thomas-piron-batiment.jpg", name: "Thomas &amp; Piron" },
+  { img: "references/lixon-site.png", name: "Lixon" },
+  { img: "references/logo-sotraba.jpg", name: "Sotraba" },
+  { img: "references/logo-team-construct.jpg", name: "Team Construct" },
+  { img: "references/logo-t-palm.jpg", name: "T-Palm" },
+  { img: "references/logo-matexi.jpg", name: "Matexi" },
+  { img: "references/logo-duchene.jpg", name: "Duchêne" },
+  { img: "references/logo-cbd.jpg", name: "CBD" },
+  { img: "references/logo-brion.jpg", name: "Brion" },
+  { img: "references/FIDEBAT-site.png", name: "FIDEBAT" },
+  { img: "references/Balcaen-et-fils.png", name: "Balcaen &amp; Fils" },
+  { img: "references/G-line-Construct-site.png", name: "G-Line Construct" },
+  { img: "references/interconstruct-site.png", name: "Interconstruct" },
+  { img: "references/Favier.jpg", name: "Favier" },
+  { img: "references/Aerogommage.png", name: "Aérogommage" },
+];
+
+const NAV_LINKS = [
+  { n: "01", label: "Accueil", scroll: "home" },
+  { n: "02", label: "Services", scroll: "services" },
+  { n: "03", label: "Réalisations", scroll: "works" },
+  { n: "04", label: "Références", scroll: "references" },
+  { n: "05", label: "Zone", scroll: "zone" },
+  { n: "06", label: "Devis", scroll: "devis" },
+];
+
+// ===================== populate sections =====================
+function populateProcess() {
+  const list = document.getElementById("process-list");
+  if (!list) return;
+  list.innerHTML = PROCESS.map((s) => `
+    <li class="process-step">
+      <span class="num">${s.n}</span>
+      <span class="badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+    </li>
+  `).join("");
+  const norms = document.getElementById("norms-row");
+  if (norms) norms.innerHTML = NORMS.map((n) => `<span class="norm-chip"><span class="dot"></span>${n}</span>`).join("");
+}
+
+function populateStats() {
+  const grid = document.getElementById("stats-grid");
+  if (!grid) return;
+  grid.innerHTML = STATS.map((s, i) => `
+    <li><p class="stat-num" id="stat-${i}">0${s.suffix}</p><p class="stat-label">${s.label}</p></li>
+  `).join("");
+  STATS.forEach((s, i) => countUp(document.getElementById(`stat-${i}`), s.value, { suffix: s.suffix }));
+}
+
+function populatePricing() {
+  const grid = document.getElementById("pricing-grid");
+  if (grid) grid.innerHTML = PRICING_POINTS.map((p) => `
+    <li class="pricing-card rv-fade">
+      <span class="badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+    </li>
+  `).join("");
+  const faq = document.getElementById("faq-list");
+  if (faq) faq.innerHTML = FAQ.map((f) => `
+    <details class="faq-item">
+      <summary>${f.q}<span class="plus">+</span></summary>
+      <p class="faq-a">${f.a}</p>
+    </details>
+  `).join("");
+}
+
+function populateZone() {
+  const list = document.getElementById("zone-list");
+  if (list) list.innerHTML = ZONES.map((z) => `
+    <div class="zone-row rv-fade"><span class="name">${z.name}</span><span class="tag">${z.tag}</span></div>
+  `).join("");
+  const chips = document.getElementById("city-chips");
+  if (chips) chips.innerHTML = CITIES.map((c) => `<span class="city-chip"><span class="dot"></span>${c}</span>`).join("");
+}
+
+function populatePortfolio() {
+  const grid = document.getElementById("portfolio-grid");
+  if (!grid) return;
+  grid.innerHTML = PORTFOLIO.map((p) => `
+    <li class="portfolio-card rv-fade">
+      <img src="${asset(p.img)}" alt="${p.title}" loading="lazy">
+      <div class="overlay"><span>${p.title}</span></div>
+    </li>
+  `).join("");
+}
+
+function populateReferences() {
+  const grid = document.getElementById("ref-grid");
+  if (!grid) return;
+  grid.innerHTML = REFERENCES.map((r) => `
+    <div class="ref-tile"><img src="${asset(r.img)}" alt="${r.name}" loading="lazy"></div>
+  `).join("");
+}
+
+function populateNav() {
+  const menu = document.getElementById("menu-items");
+  if (menu) menu.innerHTML = NAV_LINKS.map((l) => `
+    <li><button class="menu-item" data-scroll="${l.scroll}"><span class="n">${l.n}</span><span class="lbl">${l.label}</span></button></li>
+  `).join("");
+  const footerNav = document.getElementById("footer-nav");
+  if (footerNav) footerNav.innerHTML = NAV_LINKS.map((l) => `<li><a href="#${l.scroll}" data-scroll="${l.scroll}">${l.label}</a></li>`).join("");
+}
+
+// ===================== header scroll state =====================
+function mountHeaderScroll() {
+  const header = document.getElementById("site-header");
+  if (!header) return;
+  function onScroll() {
+    header.classList.toggle("scrolled", window.scrollY > 40);
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
+
+function mountScrollCue() {
+  const cue = document.getElementById("scroll-cue");
+  if (!cue) return;
+  revealOnce(cue);
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 80) cue.classList.remove("in");
+  }, { passive: true });
+}
+
+// ===================== loader =====================
+function mountLoader() {
+  const loader = document.getElementById("loader");
+  const fill = document.getElementById("loader-fill");
+  const count = document.getElementById("loader-count");
+  if (!loader) { setReady(); return; }
+  const duration = 1400;
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min(1, (now - start) / duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const pct = Math.round(eased * 100);
+    if (fill) fill.style.width = pct + "%";
+    if (count) count.textContent = String(pct).padStart(3, "0");
+    if (t < 1) requestAnimationFrame(tick);
+    else finish();
+  }
+  function finish() {
+    loader.classList.add("exit");
+    document.getElementById("site-header")?.classList.add("in");
+    setTimeout(() => { loader.style.display = "none"; setReady(); }, 700);
+  }
+  requestAnimationFrame(tick);
+}
+
+// ===================== nav menu =====================
+function mountNavMenu() {
+  const navMenu = document.getElementById("nav-menu");
+  function open() { navMenu?.classList.add("open"); stopScroll(); }
+  function close() { if (!navMenu?.classList.contains("open")) return; navMenu.classList.remove("open"); startScroll(); }
+  document.getElementById("open-nav-menu")?.addEventListener("click", open);
+  document.getElementById("close-nav-menu")?.addEventListener("click", close);
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-scroll]");
+    if (!btn) return;
+    e.preventDefault();
+    close();
+    scrollToId(btn.dataset.scroll);
+  });
+}
+
+// ===================== devis form =====================
+function mountDevisForm() {
+  const form = document.getElementById("request-form");
+  const success = document.getElementById("devis-success");
+  const toggle = document.querySelector(".client-toggle");
+  const companyFields = document.querySelectorAll(".field.company");
+  const vat = document.getElementById("f-vat");
+  const company = document.getElementById("f-company");
+  let clientType = "particulier";
+
+  toggle?.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-client]");
+    if (!btn) return;
+    clientType = btn.dataset.client;
+    toggle.querySelectorAll("button").forEach((b) => b.classList.toggle("active", b === btn));
+    const isPro = clientType === "professionnel";
+    companyFields.forEach((f) => f.classList.toggle("show", isPro));
+    if (company) company.required = isPro;
+    if (vat) vat.required = isPro;
+  });
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const val = (id) => document.getElementById(id)?.value?.trim() || "—";
+    const lines = [
+      `Type de client : ${clientType === "professionnel" ? "Professionnel" : "Particulier"}`,
+      clientType === "professionnel" ? `Société : ${val("f-company")}` : null,
+      clientType === "professionnel" ? `N° TVA : ${val("f-vat")}` : null,
+      `Nom de contact : ${val("f-name")}`,
+      `Email : ${val("f-email")}`,
+      `Téléphone : ${val("f-phone")}`,
+      `Type de travail : ${val("f-work")}`,
+      `Adresse du chantier : ${val("f-address")}, ${val("f-zip")} ${val("f-city")}`,
+      `Hauteur du bâtiment : ${val("f-height")}`,
+      `Largeur du bâtiment : ${val("f-width")}`,
+      `Durée de location souhaitée : ${val("f-duration")}`,
+      `Date de début : ${val("f-start")}`,
+      `Date de fin : ${val("f-end")}`,
+      "",
+      "Message :",
+      val("f-message"),
+    ].filter(Boolean);
+
+    const subject = encodeURIComponent(`Demande de devis — ${val("f-name")}`);
+    const body = encodeURIComponent(lines.join("\n"));
+    window.location.href = `mailto:info@engels-echafaudages.be?subject=${subject}&body=${body}`;
+
+    form.classList.add("hide");
+    success?.classList.add("show");
+  });
+
+  document.getElementById("devis-success-close")?.addEventListener("click", () => {
+    form?.classList.remove("hide");
+    success?.classList.remove("show");
+    form?.reset();
+    toggle?.querySelector('[data-client="particulier"]')?.click();
+  });
+}
+
+// ===================== reveals =====================
+function mountReveals() {
+  document.querySelectorAll("[data-reveal-lines]").forEach((el) => splitLines(el));
+  document.querySelectorAll("[data-reveal-words]").forEach((el) => splitWords(el));
+  document.querySelectorAll(".rv-fade").forEach((el) => revealOnce(el));
+}
+
+// ===================== lenis =====================
+function mountLenis() {
+  const lenis = new Lenis({ autoRaf: false, smoothWheel: true });
+  setLenis(lenis);
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+}
+
+// ===================== boot =====================
+function boot() {
+  applyAdaptiveGrid();
+  window.addEventListener("resize", applyAdaptiveGrid);
+
+  populateProcess();
+  populateStats();
+  populatePricing();
+  populateZone();
+  populatePortfolio();
+  populateReferences();
+  populateNav();
+
+  mountScaffold3D(document.getElementById("hero-canvas"));
+  mountLenis();
+  mountHeaderScroll();
+  mountScrollCue();
+  mountNavMenu();
+  mountDevisForm();
+  mountReveals();
+  mountLoader();
+
+  window.scrollTo(0, 0);
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
+}
+</script>
+</body>
+</html>
