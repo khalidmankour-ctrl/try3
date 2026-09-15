@@ -193,6 +193,28 @@ section{position:relative}
 .ref-tile img{max-width:100%;max-height:100%;object-fit:contain;filter:grayscale(1) brightness(1.5) contrast(.9);opacity:.7;transition:filter .3s,opacity .3s}
 .ref-tile:hover img{filter:none;opacity:1}
 
+/* ---- pricing reassurance + FAQ ---- */
+#pricing{background:var(--bg)}
+.pricing-grid{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:640px){.pricing-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.pricing-grid{grid-template-columns:repeat(4,1fr)}}
+.pricing-card{border-radius:var(--radius-card-sm);background:var(--panel);box-shadow:0 0 0 1px var(--line);padding:1.5rem;display:flex;flex-direction:column;gap:.85rem;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .3s}
+.pricing-card:hover{transform:translateY(-4px);background:var(--panel-2)}
+.pricing-card .badge{width:2.75rem;height:2.75rem;display:grid;place-items:center;border-radius:.875rem;background:linear-gradient(135deg,#1e6fd9,#2fbf6a);color:#fff}
+.pricing-card h3{font-size:1rem;font-weight:700;color:#fff}
+.pricing-card p{font-size:.8125rem;line-height:1.55;color:var(--muted)}
+.faq-wrap{margin-top:3.5rem;max-width:44rem}
+.faq-list{display:flex;flex-direction:column;gap:.75rem;margin-top:1rem}
+.faq-item{border-radius:var(--radius-control);background:var(--panel);box-shadow:0 0 0 1px var(--line);overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 1.25rem;font-size:.9375rem;font-weight:700;color:#fff}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .plus{flex-shrink:0;width:1.5rem;height:1.5rem;display:grid;place-items:center;border-radius:9999px;background:var(--panel-2);color:#3ecf7a;font-size:1rem;transition:transform .3s}
+.faq-item[open] summary .plus{transform:rotate(45deg)}
+.faq-item .faq-a{padding:0 1.25rem 1.1rem;font-size:.875rem;line-height:1.6;color:var(--muted)}
+.price-trust-row{display:flex;flex-wrap:wrap;gap:.6rem 1.1rem;margin-bottom:1.25rem}
+.price-trust-row span{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;font-weight:700;color:#3ecf7a}
+.price-trust-row .icon{font-size:.875rem}
+
 /* ---- devis / réservation form ---- */
 #devis{background:var(--bg)}
 .devis-wrap{margin-top:3rem;display:grid;grid-template-columns:1fr;gap:2.5rem}
@@ -400,6 +422,19 @@ footer#site-footer .shell{padding:4rem 1.25rem 2rem}
     </div>
   </section>
 
+  <section id="pricing" class="section-pad">
+    <div class="shell">
+      <p class="eyebrow rv-fade"><span class="dot"></span>Transparence</p>
+      <h2 class="section-h2" data-reveal-lines data-delay="100" style="overflow:hidden"><span class="rv-line"><span class="rv-line-inner">Un prix juste, sans mauvaise surprise</span></span></h2>
+      <p class="section-lead rv-fade" data-delay="150">Le coût d'un échafaudage peut sembler flou quand on n'est pas du métier. Voici comment on s'assure que vous ne payez jamais plus que nécessaire.</p>
+      <ul class="pricing-grid" id="pricing-grid"></ul>
+      <div class="faq-wrap">
+        <p class="footer-col-title rv-fade">Vos questions sur le prix</p>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </div>
+  </section>
+
   <section id="devis" class="section-pad">
     <div class="shell">
       <p class="eyebrow rv-fade"><span class="dot"></span>Devis &amp; réservation</p>
@@ -425,6 +460,11 @@ footer#site-footer .shell{padding:4rem 1.25rem 2rem}
           </div>
         </div>
         <div class="devis-form rv-fade" data-delay="300">
+          <div class="price-trust-row">
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Devis gratuit</span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sans engagement</span>
+            <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Aucun frais caché</span>
+          </div>
           <div class="client-toggle" role="group" aria-label="Vous êtes">
             <button type="button" class="active" data-client="particulier">Particulier</button>
             <button type="button" data-client="professionnel">Professionnel</button>
@@ -948,6 +988,19 @@ const PROCESS = [
 
 const NORMS = ["EN 12810", "EN 12811", "EN 13374"];
 
+const PRICING_POINTS = [
+  { title: "Devis 100% gratuit", desc: "Aucun frais pour recevoir votre offre, que vous donniez suite ou non." },
+  { title: "Sans engagement", desc: "Vous êtes libre d'accepter, de comparer ou de refuser — sans pression." },
+  { title: "Tout est inclus", desc: "Transport, montage, démontage et réception : le prix annoncé est le prix final." },
+  { title: "Réponse rapide", desc: "Une offre compétitive transmise dans les plus brefs délais." },
+];
+
+const FAQ = [
+  { q: "Combien coûte la location d'un échafaudage ?", a: "Le prix dépend de la surface, de la hauteur, de la durée de location et de la complexité du montage. C'est pourquoi chaque devis est calculé sur mesure pour votre chantier — jamais de tarif générique." },
+  { q: "Le transport et le montage sont-ils inclus dans le prix ?", a: "Oui. Notre devis reprend l'ensemble du service : transport, montage, démontage et réception. Le montant annoncé est bien le montant final, sans frais additionnels surprise." },
+  { q: "Dois-je payer pour obtenir un devis ?", a: "Non, jamais. Le devis est entièrement gratuit et ne vous engage à rien." },
+];
+
 const CURRENT_YEAR = new Date().getFullYear();
 const YEARS_ACTIVE = CURRENT_YEAR - 2012;
 
@@ -1033,6 +1086,24 @@ function populateStats() {
     <li><p class="stat-num" id="stat-${i}">0${s.suffix}</p><p class="stat-label">${s.label}</p></li>
   `).join("");
   STATS.forEach((s, i) => countUp(document.getElementById(`stat-${i}`), s.value, { suffix: s.suffix }));
+}
+
+function populatePricing() {
+  const grid = document.getElementById("pricing-grid");
+  if (grid) grid.innerHTML = PRICING_POINTS.map((p) => `
+    <li class="pricing-card rv-fade">
+      <span class="badge"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+    </li>
+  `).join("");
+  const faq = document.getElementById("faq-list");
+  if (faq) faq.innerHTML = FAQ.map((f) => `
+    <details class="faq-item">
+      <summary>${f.q}<span class="plus">+</span></summary>
+      <p class="faq-a">${f.a}</p>
+    </details>
+  `).join("");
 }
 
 function populateZone() {
@@ -1215,6 +1286,7 @@ function boot() {
 
   populateProcess();
   populateStats();
+  populatePricing();
   populateZone();
   populatePortfolio();
   populateReferences();
