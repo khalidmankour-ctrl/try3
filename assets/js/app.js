@@ -269,7 +269,7 @@ function renderWatch () {
       <td class="c-muted hide-sm">${p.role}</td>
       <td class="c-num">${state.unit === 'p90' ? 90 : Math.round(p.s.min / p.s.apps)}</td>
       <td class="c-num hide-sm">${p.s.goals} / ${p.s.assists}</td>
-      <td style="width:190px">${sparkline(formWin(p), 170)}</td>
+      <td class="c-form" style="width:190px">${sparkline(formWin(p), 170)}</td>
       <td style="text-align:right">${trendBadge(trendWin(p))}</td>
     </tr>`).join('');
 

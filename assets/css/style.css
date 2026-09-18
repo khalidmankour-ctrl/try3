@@ -245,7 +245,7 @@ canvas{display:block}
 
 /* Filtres ---------------------------------------------------------------- */
 .filters{display:flex;gap:10px;flex-wrap:wrap}
-.selectbox{position:relative;display:inline-flex;align-items:center}
+.selectbox{position:relative;display:inline-flex;align-items:center;min-width:0}
 .selectbox svg:first-child{position:absolute;left:12px;color:var(--muted);pointer-events:none}
 .selectbox svg:last-child{position:absolute;right:11px;color:var(--muted);pointer-events:none}
 .selectbox select{
@@ -347,7 +347,8 @@ canvas{display:block}
    TABLEAU
    ========================================================================== */
 .tablewrap{margin-top:14px;border:1px solid var(--line-soft);border-radius:12px;overflow:hidden}
-.table{width:100%;border-collapse:collapse}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table{width:100%;min-width:480px;border-collapse:collapse}
 .table thead th{
   padding:12px 16px;text-align:left;font-size:11px;font-weight:500;color:var(--muted);
   background:var(--panel-2);border-bottom:1px solid var(--line-soft);white-space:nowrap;
@@ -458,7 +459,7 @@ canvas{display:block}
 .compbar__text{flex:1;min-width:310px}
 .compbar__text h3{font-size:19px;font-weight:700}
 .compbar__text p{margin:5px 0 0;font-size:13px;color:var(--muted)}
-.compbar__pick{display:flex;align-items:center;gap:10px}
+.compbar__pick{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .swapbtn{
   width:34px;height:34px;display:grid;place-items:center;border-radius:9px;
   border:1px solid var(--line);background:var(--panel-2);color:var(--text-2);
@@ -691,6 +692,13 @@ canvas{display:block}
   .nav{gap:0}
   .nav__btn{padding:8px 10px;font-size:13px}
 }
+/* Entre 860 et 1000 px l'en-tête tient encore sur une ligne, à condition
+   de masquer le libellé de marque et de resserrer la recherche. */
+@media (max-width:1000px){
+  .header__inner{gap:16px}
+  .brand__text{display:none}
+  .search__input{width:180px}
+}
 @media (max-width:860px){
   .header__inner{gap:14px}
   .brand__text{display:none}
@@ -712,11 +720,18 @@ canvas{display:block}
   .lions__aside{display:none}
   .releve__side{display:none}
   .compbar{flex-direction:column;align-items:stretch}
+  .compbar__icon{display:none}
+  .compbar__text{min-width:0}
+  .compbar__pick{flex-wrap:wrap}
+  .compbar__pick .selectbox{flex:1 1 170px;min-width:0}
+  .compbar__pick .selectbox select{width:100%}
   .compbar__unit{margin-left:0;align-items:flex-start}
   .board,.page{padding-inline:16px}
   .compbar{margin-inline:16px;max-width:none}
   .drawer__facts{grid-template-columns:repeat(2,1fr)}
   .table .hide-sm{display:none}
+  .table{min-width:420px}
+  .c-form{width:140px !important}
 }
 @media (max-width:520px){
   .nav__btn{padding:8px 7px;font-size:12px}
