@@ -6,6 +6,7 @@ import { PLAYERS, BY_ID, FORMATION, RADAR_AXES, POSITIONS, META, DATA_SOURCE,
 import { createHeroScene }  from './three/hero.js';
 import { createPitchScene } from './three/pitch.js';
 import { createRadarScene } from './three/radar.js';
+import { renderJournal, playJournal } from './journal.js';
 
 const $  = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -154,6 +155,7 @@ function setView (name) {
   scenes.pitch && (name === 'overview' ? scenes.pitch.resume() : scenes.pitch.pause());
   if (name === 'lions')   mountLionsPitch();
   if (name === 'compare') mountRadar();
+  if (name === 'journal') { renderJournal(); playJournal(); }
   revealScan();
 }
 

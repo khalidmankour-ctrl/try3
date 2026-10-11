@@ -745,3 +745,179 @@ canvas{display:block}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   html{scroll-behavior:auto}
 }
+
+/* ==========================================================================
+   LE JOURNAL DES LIONS — une « une » assemblée en motion design
+   ========================================================================== */
+.jn{max-width:1180px;margin-inline:auto}
+
+/* Bandeau de titre ------------------------------------------------------- */
+.jn-head{text-align:center;padding:10px 0 26px}
+.jn-head__rule{
+  height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);
+  opacity:0;transform:scaleX(.3);transition:opacity .5s var(--ease),transform .7s var(--ease);
+}
+.jn-head__rule.is-in{opacity:1;transform:none}
+.jn-masthead{
+  display:flex;justify-content:center;flex-wrap:wrap;
+  margin:16px 0 12px;font-size:clamp(26px,4.4vw,58px);font-weight:900;
+  letter-spacing:.02em;line-height:1;
+}
+.jn-masthead span{
+  display:inline-block;opacity:0;transform:translateY(22px) rotate(-6deg);
+}
+.jn-masthead.is-in span{
+  animation:jnLetter .5s var(--ease) forwards;
+  animation-delay:calc(var(--i) * 26ms);
+}
+@keyframes jnLetter{to{opacity:1;transform:none}}
+.jn-head__meta{
+  display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;
+  font-family:var(--ff-display);font-size:10.5px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  opacity:0;transform:translateY(8px);transition:opacity .5s var(--ease) .1s,transform .5s var(--ease) .1s;
+}
+.jn-head__meta.is-in{opacity:1;transform:none}
+.jn-dot{color:var(--red)}
+
+/* Grille de la une ------------------------------------------------------- */
+.jn-grid{
+  display:grid;gap:16px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-areas:
+    'lead lead figure'
+    'lead lead race'
+    'rise briefs race'
+    'eleven eleven eleven';
+}
+.jn-card--lead{grid-area:lead}
+.jn-card--figure{grid-area:figure}
+.jn-card--race{grid-area:race}
+.jn-card--rise{grid-area:rise}
+.jn-card--briefs{grid-area:briefs}
+.jn-card--eleven{grid-area:eleven}
+
+.jn-card{
+  position:relative;padding:20px;border-radius:14px;
+  background:linear-gradient(165deg,#15181b,#0d1012);
+  border:1px solid var(--line);
+  opacity:0;transform:translateY(26px) scale(.985);
+  transition:opacity .55s var(--ease),transform .55s var(--ease);
+}
+.jn-card.is-in{opacity:1;transform:none}
+.jn-kicker{
+  display:inline-block;margin-bottom:14px;padding:4px 10px;border-radius:99px;
+  background:#e025321f;border:1px solid #e0253244;
+  font-family:var(--ff-display);font-size:9.5px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--red-bright);
+}
+
+/* La une ------------------------------------------------------------------ */
+.jn-lead{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.jn-crest{flex-shrink:0;filter:drop-shadow(0 8px 20px rgba(0,0,0,.6))}
+.jn-lead__name{font-size:clamp(26px,3.2vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.02}
+.jn-lead__sub{margin:5px 0 0;font-size:13.5px;color:var(--muted)}
+.jn-lead__body{margin:0;font-size:16px;line-height:1.7;color:var(--text-2)}
+.jn-lead__body b{color:#fff;font-family:var(--ff-display);font-size:21px;font-variant-numeric:tabular-nums}
+
+/* Le chiffre -------------------------------------------------------------- */
+.jn-card--figure{display:flex;flex-direction:column;justify-content:center;text-align:center}
+.jn-figure{
+  font-family:var(--ff-display);font-size:clamp(54px,8vw,92px);font-weight:900;
+  line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#fff,var(--red-bright));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.jn-figure__l{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+
+/* Classement -------------------------------------------------------------- */
+.jn-race{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.jn-race__row{
+  display:grid;grid-template-columns:16px 1fr 56px 24px;align-items:center;gap:9px;
+  font-size:12.5px;
+}
+.jn-race__rank{font-family:var(--ff-display);font-weight:700;color:var(--muted-2)}
+.jn-race__name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.jn-race__track{height:6px;border-radius:99px;background:#20262a;overflow:hidden}
+.jn-race__track i{
+  display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--red-deep),var(--red-bright));
+}
+.is-in .jn-race__track i{
+  animation:jnBar .8s var(--ease) forwards;
+  animation-delay:calc(var(--d) * 90ms);
+}
+@keyframes jnBar{to{width:var(--w)}}
+.jn-race__v{text-align:right;font-family:var(--ff-display);font-weight:700;font-variant-numeric:tabular-nums}
+
+/* Progression ------------------------------------------------------------- */
+.jn-rise{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.jn-rise h3{font-size:16px;font-weight:700}
+.jn-rise p{margin:2px 0 0;font-size:11.5px;color:var(--muted)}
+.jn-rise__pct{
+  margin-left:auto;font-family:var(--ff-display);font-size:24px;font-weight:800;
+  color:var(--green);font-variant-numeric:tabular-nums;
+}
+.jn-spark{width:100%;height:56px}
+.jn-spark__l{fill:none;stroke:var(--green);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:420;stroke-dashoffset:420;filter:drop-shadow(0 0 6px rgba(34,197,94,.5))}
+.is-in .jn-spark__l{animation:jnDraw 1.1s var(--ease) .2s forwards}
+@keyframes jnDraw{to{stroke-dashoffset:0}}
+.jn-spark circle{fill:var(--green);opacity:0}
+.is-in .jn-spark circle{animation:jnDot .3s var(--ease) forwards;animation-delay:calc(.8s + var(--i) * 80ms)}
+@keyframes jnDot{to{opacity:1}}
+
+/* Brèves ------------------------------------------------------------------ */
+.jn-briefs{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.jn-briefs li{
+  position:relative;padding-left:16px;font-size:13px;line-height:1.5;color:var(--text-2);
+}
+.jn-briefs li::before{
+  content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;
+  background:var(--red);
+}
+.jn-briefs b{color:#fff;font-weight:600}
+
+/* Le onze ----------------------------------------------------------------- */
+.jn-eleven{
+  list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;
+}
+.jn-eleven li{
+  display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:9px;
+  background:#ffffff07;border:1px solid var(--line-soft);font-size:12.5px;
+  opacity:0;transform:translateY(10px);
+}
+.is-in .jn-eleven li{
+  animation:jnUp .4s var(--ease) forwards;
+  animation-delay:calc(var(--d) * 55ms);
+}
+@keyframes jnUp{to{opacity:1;transform:none}}
+.jn-eleven span{
+  font-family:var(--ff-display);font-size:9.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--red-bright);min-width:26px;
+}
+
+/* Pied -------------------------------------------------------------------- */
+.jn-foot{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-top:22px;padding-top:18px;border-top:1px solid var(--line-soft);
+  font-size:11.5px;color:var(--muted);
+  opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease);
+}
+.jn-foot.is-in{opacity:1;transform:none}
+.jn-foot .btn{margin-left:auto}
+
+@media (max-width:980px){
+  .jn-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-areas:'lead lead' 'figure race' 'rise briefs' 'eleven eleven';
+  }
+}
+@media (max-width:640px){
+  .jn-grid{
+    grid-template-columns:minmax(0,1fr);
+    grid-template-areas:'lead' 'figure' 'race' 'rise' 'briefs' 'eleven';
+  }
+  .jn-foot .btn{margin-left:0}
+}
