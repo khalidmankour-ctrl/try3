@@ -1,0 +1,198 @@
+{
+  "_comment": "Table de correspondance entre les identifiants locaux et les identifiants API-Football. Lancez `node scripts/fetch-stats.mjs --discover` pour remplir les apiId, puis vérifiez-les à la main : la recherche par nom peut se tromper d homonyme.",
+  "season": 2025,
+  "players": [
+    {
+      "id": "hakimi",
+      "name": "Achraf Hakimi",
+      "club": "Paris Saint-Germain",
+      "apiId": null
+    },
+    {
+      "id": "bounou",
+      "name": "Yassine Bounou",
+      "club": "Al-Hilal",
+      "apiId": null
+    },
+    {
+      "id": "brahim",
+      "name": "Brahim Díaz",
+      "club": "Real Madrid",
+      "apiId": null
+    },
+    {
+      "id": "ennesyri",
+      "name": "Youssef En-Nesyri",
+      "club": "Fenerbahçe",
+      "apiId": null
+    },
+    {
+      "id": "mazraoui",
+      "name": "Noussair Mazraoui",
+      "club": "Manchester United",
+      "apiId": null
+    },
+    {
+      "id": "aguerd",
+      "name": "Nayef Aguerd",
+      "club": "Olympique de Marseille",
+      "apiId": null
+    },
+    {
+      "id": "amrabat",
+      "name": "Sofyan Amrabat",
+      "club": "Real Betis",
+      "apiId": null
+    },
+    {
+      "id": "elkaabi",
+      "name": "Ayoub El Kaabi",
+      "club": "Olympiakos",
+      "apiId": null
+    },
+    {
+      "id": "ounahi",
+      "name": "Azzedine Ounahi",
+      "club": "Panathinaïkos",
+      "apiId": null
+    },
+    {
+      "id": "ziyech",
+      "name": "Hakim Ziyech",
+      "club": "Wydad AC",
+      "apiId": null
+    },
+    {
+      "id": "saibari",
+      "name": "Ismael Saibari",
+      "club": "PSV Eindhoven",
+      "apiId": null
+    },
+    {
+      "id": "ezzalzouli",
+      "name": "Abde Ezzalzouli",
+      "club": "Real Betis",
+      "apiId": null
+    },
+    {
+      "id": "elkhannouss",
+      "name": "Bilal El Khannouss",
+      "club": "VfB Stuttgart",
+      "apiId": null
+    },
+    {
+      "id": "benseghir",
+      "name": "Eliesse Ben Seghir",
+      "club": "Bayer Leverkusen",
+      "apiId": null
+    },
+    {
+      "id": "akhomach",
+      "name": "Ilias Akhomach",
+      "club": "Villarreal",
+      "apiId": null
+    },
+    {
+      "id": "adli",
+      "name": "Amine Adli",
+      "club": "AFC Bournemouth",
+      "apiId": null
+    },
+    {
+      "id": "richardson",
+      "name": "Amir Richardson",
+      "club": "Fiorentina",
+      "apiId": null
+    },
+    {
+      "id": "elaynaoui",
+      "name": "Neil El Aynaoui",
+      "club": "AS Roma",
+      "apiId": null
+    },
+    {
+      "id": "aboukhlal",
+      "name": "Zakaria Aboukhlal",
+      "club": "Toulouse FC",
+      "apiId": null
+    },
+    {
+      "id": "riad",
+      "name": "Chadi Riad",
+      "club": "Crystal Palace",
+      "apiId": null
+    },
+    {
+      "id": "salaheddine",
+      "name": "Anass Salah-Eddine",
+      "club": "AS Roma",
+      "apiId": null
+    },
+    {
+      "id": "dari",
+      "name": "Achraf Dari",
+      "club": "Stade Brestois",
+      "apiId": null
+    },
+    {
+      "id": "targhalline",
+      "name": "Oussama Targhalline",
+      "club": "Feyenoord",
+      "apiId": null
+    },
+    {
+      "id": "boufal",
+      "name": "Sofiane Boufal",
+      "club": "Al-Rayyan",
+      "apiId": null
+    },
+    {
+      "id": "aznou",
+      "name": "Adam Aznou",
+      "club": "Everton",
+      "apiId": null
+    },
+    {
+      "id": "zabiri",
+      "name": "Yassir Zabiri",
+      "club": "FC Famalicão",
+      "apiId": null
+    },
+    {
+      "id": "ouazane",
+      "name": "Abdellah Ouazane",
+      "club": "AFC Ajax",
+      "apiId": null
+    },
+    {
+      "id": "maamma",
+      "name": "Othmane Maamma",
+      "club": "Watford",
+      "apiId": null
+    },
+    {
+      "id": "elmehdi",
+      "name": "El Mehdi Moubarik",
+      "club": "Raja CA",
+      "apiId": null
+    },
+    {
+      "id": "naimbyar",
+      "name": "Naïm Byar",
+      "club": "Angers SCO",
+      "apiId": null
+    },
+    {
+      "id": "kechta",
+      "name": "Yassine Kechta",
+      "club": "Girona FC",
+      "apiId": null
+    },
+    {
+      "id": "hamza",
+      "name": "Hamza Igamane",
+      "club": "RC Lens",
+      "apiId": null
+    }
+  ]
+}

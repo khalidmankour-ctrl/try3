@@ -1,7 +1,8 @@
 /* ============================================================================
  * ATLAS PERFORMANCE — logique applicative
  * ==========================================================================*/
-import { PLAYERS, BY_ID, FORMATION, RADAR_AXES, POSITIONS, META, clubColors, initials } from './data.js';
+import { PLAYERS, BY_ID, FORMATION, RADAR_AXES, POSITIONS, META, DATA_SOURCE,
+         applyLiveData, clubColors, initials } from './data.js';
 import { createHeroScene }  from './three/hero.js';
 import { createPitchScene } from './three/pitch.js';
 import { createRadarScene } from './three/radar.js';
@@ -743,7 +744,48 @@ function releveBackdrop (canvas) {
 }
 
 /* ==========================================================================
-   14. Initialisation
+   14. Source de données
+   ========================================================================== */
+
+/**
+ * Charge l'instantané produit par scripts/fetch-stats.mjs, s'il existe.
+ * En son absence — fichier manquant, JSON invalide, site ouvert en local —
+ * on reste silencieusement sur le jeu de démonstration.
+ */
+async function hydrate () {
+  try {
+    const res = await fetch('assets/data/players.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    applyLiveData(await res.json());
+  } catch {
+    /* Pas de données en direct : le jeu de démonstration fait foi. */
+  }
+}
+
+/** Le bandeau doit dire la vérité sur ce qui est mesuré et ce qui ne l'est pas. */
+function renderDataBanner () {
+  const el = $('#demobarText');
+  if (!el) return;
+
+  if (!DATA_SOURCE.live) {
+    el.innerHTML = '<b>Mode démo</b> — identités réelles, statistiques illustratives';
+    return;
+  }
+
+  const d = DATA_SOURCE.fetchedAt ? new Date(DATA_SOURCE.fetchedAt) : null;
+  const quand = d && !isNaN(d)
+    ? d.toLocaleString('fr-FR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })
+    : 'date inconnue';
+
+  $('#demobar').style.background = 'linear-gradient(90deg,#04140c,#0a2e1a 35%,#0a2e1a 65%,#04140c)';
+  $('#demobar').style.borderBottomColor = '#135c33';
+  el.style.color = '#cdeedd';
+  el.innerHTML = `<b>Données réelles</b> — ${DATA_SOURCE.count} joueurs via ${DATA_SOURCE.source || 'API'}, `
+               + `relevé du ${quand} · indices d'attributs et forme restent éditoriaux`;
+}
+
+/* ==========================================================================
+   15. Initialisation
    ========================================================================== */
 function fillLeagueSelects () {
   const leagues = [...new Set(PLAYERS.map(p => p.league))].sort((a, b) => a.localeCompare(b, 'fr'));
@@ -763,8 +805,10 @@ function userAvatar () {
     </svg>`;
 }
 
-function boot () {
+async function boot () {
   userAvatar();
+  await hydrate();
+  renderDataBanner();
   fillLeagueSelects();
   fillPlayerSelects();
   renderFeatured();

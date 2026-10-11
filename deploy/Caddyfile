@@ -1,0 +1,31 @@
+# Caddy obtient et renouvelle le certificat TLS tout seul.
+#
+# Remplacez atlas.example.com par votre domaine, et faites pointer son
+# enregistrement A sur l'IP du serveur AVANT de démarrer Caddy.
+#
+# Pas encore de domaine ? Remplacez la ligne par  :80  et Caddy servira
+# en HTTP simple sur l'IP du serveur, le temps des essais.
+
+atlas.example.com {
+    root * /var/www/atlas-performance
+    encode zstd gzip
+    file_server
+
+    # L'instantané de stats change tous les jours : pas de cache long.
+    @data path /assets/data/*
+    header @data Cache-Control "public, max-age=300"
+
+    # Le reste est versionné par le déploiement : cache confortable.
+    @static path /assets/*
+    header @static Cache-Control "public, max-age=86400"
+
+    header {
+        X-Content-Type-Options nosniff
+        Referrer-Policy strict-origin-when-cross-origin
+        -Server
+    }
+
+    log {
+        output file /var/log/caddy/atlas-performance.log
+    }
+}

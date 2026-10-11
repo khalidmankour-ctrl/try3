@@ -1,0 +1,13 @@
+[Unit]
+Description=Atlas Performance — rafraîchit les stats une fois par jour
+
+[Timer]
+# 05h00 UTC : après les matchs de la veille, avant les visites de la journée.
+OnCalendar=*-*-* 05:00:00
+# Rattrape l'exécution si le serveur était éteint à l'heure dite.
+Persistent=true
+# Étale le départ sur 10 minutes pour ne pas taper l'API à la seconde pile.
+RandomizedDelaySec=600
+
+[Install]
+WantedBy=timers.target

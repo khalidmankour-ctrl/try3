@@ -16,6 +16,58 @@ export const META = {
   demo: true
 };
 
+/* État de la source de données, renseigné au démarrage par applyLiveData().
+   Tant que `live` est faux, tout ce qu'affiche le site vient du jeu de
+   démonstration ci-dessous. */
+export const DATA_SOURCE = {
+  live: false,
+  source: null,
+  fetchedAt: null,
+  season: null,
+  count: 0,
+  /* Champs réellement mesurés quand la source est en direct. Les autres
+     (radar, note, form) restent éditoriaux : aucune API gratuite ne les
+     fournit, il ne faut donc pas les présenter comme mesurés. */
+  provides: [],
+  editorial: ['radar', 'note', 'form']
+};
+
+/**
+ * Fusionne un instantané produit par scripts/fetch-stats.mjs dans PLAYERS,
+ * sur place, pour que tous les modules qui ont déjà importé PLAYERS voient
+ * les nouvelles valeurs. Seules les valeurs non nulles écrasent la démo.
+ * @param {{players:Object, source?:string, fetchedAt?:string, season?:number}} payload
+ * @returns {number} nombre de joueurs mis à jour
+ */
+export function applyLiveData (payload) {
+  if (!payload || typeof payload.players !== 'object') return 0;
+
+  const STAT_KEYS = ['apps', 'min', 'goals', 'assists', 'rating', 'pass', 'duels',
+                     'keyPasses', 'dribbles', 'tackles', 'saves', 'goalsAgainst'];
+  let n = 0;
+
+  for (const [id, live] of Object.entries(payload.players)) {
+    const p = BY_ID[id];
+    if (!p || !live) continue;
+    if (live.club)   p.club   = live.club;
+    if (live.league) p.league = live.league;
+    STAT_KEYS.forEach(k => {
+      if (live[k] !== null && live[k] !== undefined) p.s[k] = live[k];
+    });
+    p.live = true;
+    n++;
+  }
+
+  DATA_SOURCE.live      = n > 0;
+  DATA_SOURCE.source    = payload.source    || null;
+  DATA_SOURCE.fetchedAt = payload.fetchedAt || null;
+  DATA_SOURCE.season    = payload.season    || null;
+  DATA_SOURCE.count     = n;
+  if (Array.isArray(payload.provides))  DATA_SOURCE.provides  = payload.provides;
+  if (Array.isArray(payload.editorial)) DATA_SOURCE.editorial = payload.editorial;
+  return n;
+}
+
 /* Palette de maillots pour les avatars générés (aucune photo utilisée). */
 export const CLUB_COLORS = {
   'Paris Saint-Germain': ['#0b2545', '#e30613'],

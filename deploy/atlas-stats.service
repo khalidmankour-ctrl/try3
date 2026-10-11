@@ -1,0 +1,22 @@
+[Unit]
+Description=Atlas Performance — récupération des statistiques API-Football
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=atlas
+WorkingDirectory=/var/www/atlas-performance
+EnvironmentFile=/etc/atlas-performance.env
+ExecStart=/usr/bin/node scripts/fetch-stats.mjs
+
+# La récupération prend environ 4 minutes : 32 joueurs à 7 s d'intervalle
+# pour rester sous la limite de 10 requêtes/minute du palier gratuit.
+TimeoutStartSec=900
+
+# Durcissement : le service n'a besoin d'écrire que dans assets/data.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/www/atlas-performance/assets/data
