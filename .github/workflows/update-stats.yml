@@ -33,30 +33,40 @@ jobs:
         with:
           node-version: '20'
 
+      # Sans clé, une exécution programmée s'arrête en silence : le site
+      # reste simplement en mode démo. Une exécution lancée à la main
+      # échoue au contraire bruyamment, puisqu'on en attendait un résultat.
       - name: Vérifier que la clé est configurée
+        id: check
         env:
           KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: |
-          if [ -z "$KEY" ]; then
+          if [ -n "$KEY" ]; then
+            echo "Clé présente (${#KEY} caractères)."
+            echo "has_key=true" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "::error::Le secret API_FOOTBALL_KEY est absent."
             echo "Ajoutez-le dans Settings → Secrets and variables → Actions."
             exit 1
+          else
+            echo "::notice::Pas de clé configurée, rien à faire. Le site reste en mode démo."
+            echo "has_key=false" >> "$GITHUB_OUTPUT"
           fi
-          echo "Clé présente (${#KEY} caractères)."
 
       - name: Résoudre les identifiants des joueurs
-        if: inputs.mode == 'discover'
+        if: steps.check.outputs.has_key == 'true' && inputs.mode == 'discover'
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: node scripts/fetch-stats.mjs --discover
 
       - name: Récupérer les statistiques
-        if: inputs.mode != 'discover'
+        if: steps.check.outputs.has_key == 'true' && inputs.mode != 'discover'
         env:
           API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: node scripts/fetch-stats.mjs
 
       - name: Commiter s'il y a du changement
+        if: steps.check.outputs.has_key == 'true'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
