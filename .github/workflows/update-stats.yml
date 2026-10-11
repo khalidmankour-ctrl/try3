@@ -1,0 +1,69 @@
+name: Rafraîchir les statistiques
+
+on:
+  schedule:
+    # 05h00 UTC : après les matchs de la veille, avant les visites du jour.
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Que faire"
+        required: true
+        default: stats
+        type: choice
+        options:
+          - stats      # récupère les statistiques (usage normal)
+          - discover   # résout les identifiants des joueurs (une seule fois)
+
+permissions:
+  contents: write
+
+# Une exécution à la fois : deux tâches en parallèle épuiseraient le quota.
+concurrency:
+  group: update-stats
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Vérifier que la clé est configurée
+        env:
+          KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::error::Le secret API_FOOTBALL_KEY est absent."
+            echo "Ajoutez-le dans Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          echo "Clé présente (${#KEY} caractères)."
+
+      - name: Résoudre les identifiants des joueurs
+        if: inputs.mode == 'discover'
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: node scripts/fetch-stats.mjs --discover
+
+      - name: Récupérer les statistiques
+        if: inputs.mode != 'discover'
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: node scripts/fetch-stats.mjs
+
+      - name: Commiter s'il y a du changement
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/players.json scripts/players-map.json
+          if git diff --staged --quiet; then
+            echo "Aucun changement, rien à commiter."
+          else
+            git commit -m "Met à jour les statistiques ($(date -u '+%Y-%m-%d'))"
+            git push
+          fi
