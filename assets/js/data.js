@@ -29,7 +29,10 @@ export const DATA_SOURCE = {
      (radar, note, form) restent éditoriaux : aucune API gratuite ne les
      fournit, il ne faut donc pas les présenter comme mesurés. */
   provides: [],
-  editorial: ['radar', 'note', 'form']
+  editorial: ['radar', 'note', 'form'],
+  /* Axes du radar quand ils sont calculés depuis les vraies données.
+     Null tant qu'on affiche le radar éditorial. */
+  radarAxes: null
 };
 
 /**
@@ -54,6 +57,7 @@ export function applyLiveData (payload) {
     STAT_KEYS.forEach(k => {
       if (live[k] !== null && live[k] !== undefined) p.s[k] = live[k];
     });
+    if (live.radar) p.radar = live.radar;
     p.live = true;
     n++;
   }
@@ -65,6 +69,9 @@ export function applyLiveData (payload) {
   DATA_SOURCE.count     = n;
   if (Array.isArray(payload.provides))  DATA_SOURCE.provides  = payload.provides;
   if (Array.isArray(payload.editorial)) DATA_SOURCE.editorial = payload.editorial;
+  if (Array.isArray(payload.radarAxes) && payload.radarAxes.length) {
+    DATA_SOURCE.radarAxes = payload.radarAxes;
+  }
   return n;
 }
 

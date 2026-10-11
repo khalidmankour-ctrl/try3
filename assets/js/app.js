@@ -12,6 +12,10 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
 const fmt = (v, d = 0) => Number(v).toLocaleString('fr-FR', { minimumFractionDigits: d, maximumFractionDigits: d });
 
+/** Axes du radar effectivement affichés : calculés si on a les vraies
+    données, éditoriaux sinon. */
+const axes = () => DATA_SOURCE.radarAxes || RADAR_AXES;
+
 const state = {
   view: 'overview',
   unit: 'match',            // 'match' | 'p90'
@@ -315,7 +319,7 @@ function renderGrid () {
   $('#pCount').textContent = list.length;
   $('#playerEmpty').hidden = list.length > 0;
 
-  const topAxes = p => RADAR_AXES
+  const topAxes = p => axes()
     .map(a => ({ ...a, v: p.radar[a.key] }))
     .sort((x, y) => y.v - x.v).slice(0, 3);
 
@@ -457,7 +461,7 @@ function compCard (p, color) {
       </div>
     </div>
     <div class="comp__rows">
-      ${RADAR_AXES.map(a => `
+      ${axes().map(a => `
         <div class="crow">
           <div class="crow__top"><span>${a.label}</span><b>${p.radar[a.key]}</b></div>
           <div class="crow__t"><i class="crow__f" data-w="${p.radar[a.key]}" style="background:linear-gradient(90deg,${color}55,${color})"></i></div>
@@ -501,7 +505,7 @@ function renderCompare () {
 }
 
 function mountRadar () {
-  if (!scenes.radar) scenes.radar = createRadarScene($('#radarCanvas'), RADAR_AXES);
+  if (!scenes.radar) scenes.radar = createRadarScene($('#radarCanvas'), axes());
   else scenes.radar.resume();
   const a = BY_ID[state.cmp[0]], b = BY_ID[state.cmp[1]];
   scenes.radar.set(a?.radar, b?.radar);
@@ -598,7 +602,7 @@ function openPlayer (id) {
   document.body.classList.add('is-locked');
 
   scenes.drawerRadar?.dispose();
-  scenes.drawerRadar = createRadarScene($('#drawerRadar'), RADAR_AXES);
+  scenes.drawerRadar = createRadarScene($('#drawerRadar'), axes());
   scenes.drawerRadar.set(p.radar, null);
 }
 
@@ -781,7 +785,7 @@ function renderDataBanner () {
   $('#demobar').style.borderBottomColor = '#135c33';
   el.style.color = '#cdeedd';
   el.innerHTML = `<b>Données réelles</b> — ${DATA_SOURCE.count} joueurs via ${DATA_SOURCE.source || 'API'}, `
-               + `relevé du ${quand} · indices d'attributs et forme restent éditoriaux`;
+               + `relevé du ${quand} · ${DATA_SOURCE.radarAxes ? 'indices calculés par 90 min' : 'indices d\'attributs éditoriaux'}`;
 }
 
 /* ==========================================================================

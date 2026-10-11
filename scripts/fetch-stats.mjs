@@ -130,9 +130,64 @@ function aggregate (entries) {
     keyPasses: apps ? +(sum(s => s.passes?.key)       / apps).toFixed(1) : null,
     dribbles:  apps ? +(sum(s => s.dribbles?.success) / apps).toFixed(1) : null,
     tackles:   apps ? +(sum(s => s.tackles?.total)    / apps).toFixed(1) : null,
+    /* Totaux bruts, gardés pour le calcul des indices par 90 minutes. */
+    _raw: {
+      keyPasses:     sum(s => s.passes?.key),
+      dribbles:      sum(s => s.dribbles?.success),
+      tackles:       sum(s => s.tackles?.total),
+      interceptions: sum(s => s.tackles?.interceptions)
+    },
     saves:        sum(s => s.goals?.saves)    || null,
     goalsAgainst: sum(s => s.goals?.conceded) || null
   };
+}
+
+/* ------------------------------------------------- indices par 90 minutes */
+
+/** Six axes, tous calculables depuis ce que renvoie API-Football. */
+const RADAR_AXES = [
+  { key: 'finition', label: 'Finition', per90: a => a.goals,            needsMin: true },
+  { key: 'creation', label: 'Création', per90: a => a._raw.keyPasses,   needsMin: true },
+  { key: 'passe',    label: 'Passe',    pct:   a => a.pass },
+  { key: 'dribble',  label: 'Dribble',  per90: a => a._raw.dribbles,    needsMin: true },
+  { key: 'defense',  label: 'Défense',  per90: a => a._raw.tackles + a._raw.interceptions, needsMin: true },
+  { key: 'duels',    label: 'Duels',    pct:   a => a.duels }
+];
+
+/**
+ * Convertit les statistiques brutes en indices 0–100.
+ *
+ * Méthode, volontairement simple et vérifiable : pour chaque axe on ramène la
+ * valeur à 90 minutes, puis on classe le joueur parmi les autres joueurs
+ * récupérés. L'indice est donc un RANG DANS CE GROUPE, pas une note absolue.
+ *
+ * Deux limites assumées : le classement mélange tous les postes, donc un
+ * gardien ressort très bas en finition et en dribble ; et les joueurs ayant
+ * très peu joué sont instables. Les deux sont documentés dans le README.
+ */
+function deriveRadar (byId) {
+  const ids = Object.keys(byId).filter(id => (byId[id].min || 0) >= 180);
+  if (ids.length < 4) return null;   // trop peu de monde pour un classement
+
+  const radars = {};
+  ids.forEach(id => (radars[id] = {}));
+
+  for (const axis of RADAR_AXES) {
+    const values = ids.map(id => {
+      const a = byId[id];
+      if (axis.pct) return Number(axis.pct(a)) || 0;
+      return (Number(axis.per90(a)) || 0) / (a.min / 90);
+    });
+
+    const sorted = [...values].sort((x, y) => x - y);
+    ids.forEach((id, i) => {
+      const below = sorted.filter(v => v < values[i]).length;
+      const pct = ids.length > 1 ? (below / (ids.length - 1)) * 100 : 50;
+      /* Bornes 5–98 : un indice n'est jamais une vérité absolue. */
+      radars[id][axis.key] = Math.round(Math.min(98, Math.max(5, pct)));
+    });
+  }
+  return radars;
 }
 
 async function fetchStats (map) {
@@ -158,6 +213,17 @@ async function fetchStats (map) {
     await sleep(DELAY);
   }
 
+  const radars = deriveRadar(out);
+  if (radars) {
+    Object.entries(radars).forEach(([id, r]) => { out[id].radar = r; });
+    console.log(`\nIndices par 90 min calculés pour ${Object.keys(radars).length} joueur(s).`);
+  } else {
+    console.log('\nPas assez de joueurs pour classer les indices : radar éditorial conservé.');
+  }
+
+  /* Les totaux bruts ne servaient qu'au calcul : inutile de les publier. */
+  Object.values(out).forEach(p => delete p._raw);
+
   const payload = {
     source: 'API-Football (api-sports.io)',
     season: map.season,
@@ -165,8 +231,11 @@ async function fetchStats (map) {
     /* Ce que ce fichier contient vraiment, pour que l'interface puisse
        étiqueter honnêtement ce qui est mesuré et ce qui ne l'est pas. */
     provides: ['club', 'league', 'apps', 'min', 'goals', 'assists', 'rating',
-               'pass', 'duels', 'keyPasses', 'dribbles', 'tackles', 'saves', 'goalsAgainst'],
-    editorial: ['radar', 'note', 'form'],
+               'pass', 'duels', 'keyPasses', 'dribbles', 'tackles', 'saves', 'goalsAgainst'
+              ].concat(radars ? ['radar'] : []),
+    editorial: radars ? ['note', 'form'] : ['radar', 'note', 'form'],
+    /* Axes du radar calculé, pour que l'interface affiche les bons libellés. */
+    radarAxes: radars ? RADAR_AXES.map(a => ({ key: a.key, label: a.label })) : null,
     players: out
   };
 
