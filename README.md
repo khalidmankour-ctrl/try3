@@ -90,8 +90,24 @@ connu à la rédaction ; vérifiez-les avant toute réutilisation publique.
 
 ### Brancher de vraies données
 
-Remplacez le tableau `PLAYERS` par la réponse de votre API en conservant la
-forme des objets ; le reste de l'application suit sans autre modification.
+**Chemin automatisé (recommandé).** Le dépôt contient une chaîne complète :
+`scripts/fetch-stats.mjs` interroge API-Football et écrit un instantané dans
+`assets/data/players.json`, que le site charge au démarrage et fusionne
+par-dessus le jeu de démonstration. Un minuteur systemd le rafraîchit chaque
+jour. Marche à suivre : **[`deploy/INSTALL.md`](deploy/INSTALL.md)**.
+
+Ce que l'instantané remplace vraiment : club, championnat, matchs, minutes,
+buts, passes décisives, note, pourcentage de passes, duels gagnés, passes clés,
+dribbles, tacles, arrêts et buts encaissés. Ce qu'il ne remplace pas : les
+**indices d'attributs du radar**, la **note de lecture du profil** et la
+**forme sur cinq matchs** restent éditoriaux. Aucune offre gratuite ne fournit
+les deux premiers, et la forme par match demanderait un appel par rencontre,
+bien au-delà des 100 requêtes quotidiennes. Le bandeau du site le dit aux
+visiteurs plutôt que de laisser croire que tout est mesuré.
+
+**Chemin manuel.** Remplacez le tableau `PLAYERS` par la réponse de votre API
+en conservant la forme des objets ; le reste de l'application suit sans autre
+modification.
 
 ```js
 {
